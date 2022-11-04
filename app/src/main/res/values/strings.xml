@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Octopus</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="favorite">Favorites</string>
+    <string name="hungry">Hungry Me</string>
+    <string name="profile">Profile</string>
+</resources>
