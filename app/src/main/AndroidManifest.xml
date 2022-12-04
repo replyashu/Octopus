@@ -11,6 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/octopus"
         android:supportsRtl="true"
+        android:name=".OctopusApplication"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
