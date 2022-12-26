@@ -8,7 +8,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.ashu.ocotopus.databinding.FragmentHungryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HungryFragment : Fragment() {
 
     private var _binding: FragmentHungryBinding? = null

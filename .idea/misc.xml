@@ -10,7 +10,9 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/motion_dish_of_day.xml" value="0.13601823708206687" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.2324074074074074" />
+        <entry key="app/src/main/res/xml/motion_dish_of_day.xml" value="0.13652482269503546" />
       </map>
     </option>
   </component>
