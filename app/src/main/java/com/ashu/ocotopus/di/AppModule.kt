@@ -4,6 +4,7 @@ import com.ashu.ocotopus.BuildConfig
 import com.ashu.ocotopus.api.ApiHelper
 import com.ashu.ocotopus.api.ApiHelperImp
 import com.ashu.ocotopus.api.ApiService
+import com.ashu.ocotopus.interceptors.GzipInterceptor
 import com.ashu.ocotopus.util.Constant
 import dagger.Module
 import dagger.Provides
@@ -26,9 +27,11 @@ object AppModule {
     @Provides
     fun provideOkHttpClient() = if (BuildConfig.DEBUG){
         val loggingInterceptor = HttpLoggingInterceptor()
+        val gzipInterceptor = GzipInterceptor()
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
+            .addNetworkInterceptor(loggingInterceptor)
+            .addInterceptor(gzipInterceptor)
             .build()
     }else{
         OkHttpClient
