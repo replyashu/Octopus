@@ -42,21 +42,6 @@ class HomeFragment : Fragment() {
 
         binding.apply {
 
-            imageView0.setOnClickListener {
-                carouselDishOfTheDay.transitionToIndex(2, 100)
-            }
-            imageView1.setOnClickListener {
-                carouselDishOfTheDay.transitionToIndex(3,100)
-            }
-            imageView2.setOnClickListener {
-                carouselDishOfTheDay.transitionToIndex(4, 100)
-            }
-            imageView3.setOnClickListener {
-                carouselDishOfTheDay.transitionToIndex(5,100)
-            }
-            imageView4.setOnClickListener {
-                carouselDishOfTheDay.transitionToIndex(0, 1000)
-            }
             carouselDishOfTheDay.setAdapter(object : Carousel.Adapter {
                 override fun count(): Int {
                     return 5

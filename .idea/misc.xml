@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/bottom_nav_selector.xml" value="0.1135" />
         <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.217" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dish_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
@@ -13,6 +14,7 @@
         <entry key="app/src/main/res/layout/motion_dish_of_day.xml" value="0.13601823708206687" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.2324074074074074" />
         <entry key="app/src/main/res/xml/motion_dish_of_day.xml" value="0.13652482269503546" />
+        <entry key="app/src/main/res/xml/network_security.xml" value="0.1" />
       </map>
     </option>
   </component>
