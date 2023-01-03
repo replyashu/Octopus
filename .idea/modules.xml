@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Octopus.iml" filepath="$PROJECT_DIR$/.idea/modules/Octopus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Octopus.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Octopus.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app-analytics/Octopus.app-analytics.iml" filepath="$PROJECT_DIR$/.idea/modules/app-analytics/Octopus.app-analytics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app-analytics/Octopus.app-analytics.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app-analytics/Octopus.app-analytics.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app-analytics/Octopus.app-analytics.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app-analytics/Octopus.app-analytics.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app-analytics/Octopus.app-analytics.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app-analytics/Octopus.app-analytics.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Octopus.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Octopus.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Octopus.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Octopus.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Octopus.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Octopus.app.unitTest.iml" />
+    </modules>
+  </component>
+</project>

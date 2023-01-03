@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.ashu.ocotopus.app-mergeReleaseResources-48:/layout/dish_item.xml",
+        "source": "com.ashu.ocotopus.app-main-50:/layout/dish_item.xml"
+    },
+    {
+        "merged": "com.ashu.ocotopus.app-mergeReleaseResources-48:/layout/fragment_favorite.xml",
+        "source": "com.ashu.ocotopus.app-main-50:/layout/fragment_favorite.xml"
+    },
+    {
+        "merged": "com.ashu.ocotopus.app-mergeReleaseResources-48:/layout/activity_main.xml",
+        "source": "com.ashu.ocotopus.app-main-50:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.ashu.ocotopus.app-mergeReleaseResources-48:/layout/fragment_hungry.xml",
+        "source": "com.ashu.ocotopus.app-main-50:/layout/fragment_hungry.xml"
+    },
+    {
+        "merged": "com.ashu.ocotopus.app-mergeReleaseResources-48:/layout/fragment_home.xml",
+        "source": "com.ashu.ocotopus.app-main-50:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.ashu.ocotopus.app-mergeReleaseResources-48:/layout/fragment_profile.xml",
+        "source": "com.ashu.ocotopus.app-main-50:/layout/fragment_profile.xml"
+    }
+]

@@ -1,0 +1,112 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.ashu.ocotopus"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:6:5-67
+11-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:6:22-64
+12
+13    <permission
+13-->[androidx.core:core:1.9.0] /Users/ashutosh/.gradle/caches/transforms-3/7e894a42c5c2ff1f6130f83a9ff2e6d9/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+14        android:name="com.ashu.ocotopus.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+14-->[androidx.core:core:1.9.0] /Users/ashutosh/.gradle/caches/transforms-3/7e894a42c5c2ff1f6130f83a9ff2e6d9/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+15        android:protectionLevel="signature" />
+15-->[androidx.core:core:1.9.0] /Users/ashutosh/.gradle/caches/transforms-3/7e894a42c5c2ff1f6130f83a9ff2e6d9/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+16
+17    <uses-permission android:name="com.ashu.ocotopus.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+17-->[androidx.core:core:1.9.0] /Users/ashutosh/.gradle/caches/transforms-3/7e894a42c5c2ff1f6130f83a9ff2e6d9/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+17-->[androidx.core:core:1.9.0] /Users/ashutosh/.gradle/caches/transforms-3/7e894a42c5c2ff1f6130f83a9ff2e6d9/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+18
+19    <application
+19-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:8:5-30:19
+20        android:name="com.ashu.ocotopus.OctopusApplication"
+20-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:17:9-43
+21        android:allowBackup="true"
+21-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:9:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.9.0] /Users/ashutosh/.gradle/caches/transforms-3/7e894a42c5c2ff1f6130f83a9ff2e6d9/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+23        android:dataExtractionRules="@xml/data_extraction_rules"
+23-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:10:9-65
+24        android:debuggable="true"
+25        android:fullBackupContent="@xml/backup_rules"
+25-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:11:9-54
+26        android:icon="@drawable/octopus"
+26-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:12:9-41
+27        android:label="@string/app_name"
+27-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:14:9-41
+28        android:networkSecurityConfig="@xml/network_security_config"
+28-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:18:9-69
+29        android:roundIcon="@drawable/octopus"
+29-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:15:9-46
+30        android:supportsRtl="true"
+30-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:16:9-35
+31        android:testOnly="true"
+32        android:theme="@style/Theme.Material3.Dark.NoActionBar"
+32-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:19:9-64
+33        android:usesCleartextTraffic="true" >
+33-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:13:9-44
+34        <activity
+34-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:21:9-29:20
+35            android:name="com.ashu.ocotopus.MainActivity"
+35-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:22:13-41
+36            android:exported="true"
+36-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:23:13-36
+37            android:label="@string/app_name" >
+37-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:24:13-45
+38            <intent-filter>
+38-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:25:13-28:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:26:17-69
+39-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:26:25-66
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:27:17-77
+41-->/Users/ashutosh/Documents/POCs/Android/app/src/main/AndroidManifest.xml:27:27-74
+42            </intent-filter>
+43        </activity>
+44
+45        <uses-library
+45-->[androidx.window:window:1.0.0] /Users/ashutosh/.gradle/caches/transforms-3/6aab4dfcf8bf14037562c2ca6a0f1ea2/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+46            android:name="androidx.window.extensions"
+46-->[androidx.window:window:1.0.0] /Users/ashutosh/.gradle/caches/transforms-3/6aab4dfcf8bf14037562c2ca6a0f1ea2/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+47            android:required="false" />
+47-->[androidx.window:window:1.0.0] /Users/ashutosh/.gradle/caches/transforms-3/6aab4dfcf8bf14037562c2ca6a0f1ea2/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+48        <uses-library
+48-->[androidx.window:window:1.0.0] /Users/ashutosh/.gradle/caches/transforms-3/6aab4dfcf8bf14037562c2ca6a0f1ea2/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+49            android:name="androidx.window.sidecar"
+49-->[androidx.window:window:1.0.0] /Users/ashutosh/.gradle/caches/transforms-3/6aab4dfcf8bf14037562c2ca6a0f1ea2/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+50            android:required="false" />
+50-->[androidx.window:window:1.0.0] /Users/ashutosh/.gradle/caches/transforms-3/6aab4dfcf8bf14037562c2ca6a0f1ea2/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+51
+52        <provider
+52-->[androidx.emoji2:emoji2:1.2.0] /Users/ashutosh/.gradle/caches/transforms-3/8a410d727b8a2aaa605de66eec2bc8d3/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+53            android:name="androidx.startup.InitializationProvider"
+53-->[androidx.emoji2:emoji2:1.2.0] /Users/ashutosh/.gradle/caches/transforms-3/8a410d727b8a2aaa605de66eec2bc8d3/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+54            android:authorities="com.ashu.ocotopus.androidx-startup"
+54-->[androidx.emoji2:emoji2:1.2.0] /Users/ashutosh/.gradle/caches/transforms-3/8a410d727b8a2aaa605de66eec2bc8d3/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+55            android:exported="false" >
+55-->[androidx.emoji2:emoji2:1.2.0] /Users/ashutosh/.gradle/caches/transforms-3/8a410d727b8a2aaa605de66eec2bc8d3/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+56            <meta-data
+56-->[androidx.emoji2:emoji2:1.2.0] /Users/ashutosh/.gradle/caches/transforms-3/8a410d727b8a2aaa605de66eec2bc8d3/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+57                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+57-->[androidx.emoji2:emoji2:1.2.0] /Users/ashutosh/.gradle/caches/transforms-3/8a410d727b8a2aaa605de66eec2bc8d3/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+58                android:value="androidx.startup" />
+58-->[androidx.emoji2:emoji2:1.2.0] /Users/ashutosh/.gradle/caches/transforms-3/8a410d727b8a2aaa605de66eec2bc8d3/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+59            <meta-data
+59-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/ashutosh/.gradle/caches/transforms-3/bf3a64ae30aa6a23fd46731081959d60/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+60                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+60-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/ashutosh/.gradle/caches/transforms-3/bf3a64ae30aa6a23fd46731081959d60/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+61                android:value="androidx.startup" />
+61-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/ashutosh/.gradle/caches/transforms-3/bf3a64ae30aa6a23fd46731081959d60/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+62        </provider>
+63    </application>
+64
+65</manifest>

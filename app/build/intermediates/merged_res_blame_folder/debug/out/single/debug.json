@@ -1,0 +1,230 @@
+[
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-anydpi-v24_ic_dish_icon.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-anydpi-v24/ic_dish_icon.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/xml_network_security_config.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable_ic_dining_icon.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/drawable/ic_dining_icon.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/layout_fragment_hungry.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/fragment_hungry.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-xxxhdpi_ic_female_user_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-xxxhdpi/ic_female_user_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-xxhdpi_ic_dish_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-xxhdpi/ic_dish_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/layout_fragment_favorite.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/fragment_favorite.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/xml_backup_rules.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-hdpi_ic_female_user_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-hdpi/ic_female_user_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/layout_dish_item.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/dish_item.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-mdpi_ic_female_user_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-mdpi/ic_female_user_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-xhdpi_ic_add_to_favorites_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-xhdpi/ic_add_to_favorites_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-ldpi_ic_female_user_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-ldpi/ic_female_user_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable_octopus.webp.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/drawable/octopus.webp"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/xml_fragment_home_scene.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/xml/fragment_home_scene.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/layout_fragment_home.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-anydpi-v24_ic_female_user_icon.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-anydpi-v24/ic_female_user_icon.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-mdpi_ic_add_to_favorites_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-mdpi/ic_add_to_favorites_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/menu_bottom_nav_menu.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-xxhdpi_ic_add_to_favorites_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-xxhdpi/ic_add_to_favorites_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-ldpi_ic_dish_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-ldpi/ic_dish_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-mdpi_ic_dish_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-mdpi/ic_dish_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-xxxhdpi_ic_add_to_favorites_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-xxxhdpi/ic_add_to_favorites_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/xml_motion_dish_of_day.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/xml/motion_dish_of_day.xml"
+    },
+    {
+        "merged": "com.ashu.ocotopus.app-merged_res-50:/layout_fragment_home.xml.flat",
+        "source": "com.ashu.ocotopus.app-main-52:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/layout_fragment_profile.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-xhdpi_ic_female_user_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-xhdpi/ic_female_user_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/layout_activity_main.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable_ic_home_black_24dp.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/drawable/ic_home_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-ldpi_ic_add_to_favorites_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-ldpi/ic_add_to_favorites_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-anydpi-v24_ic_add_to_favorites_icon.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-anydpi-v24/ic_add_to_favorites_icon.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable_ic_office_worker_icon.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/drawable/ic_office_worker_icon.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-xhdpi_ic_dish_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-xhdpi/ic_dish_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-xxxhdpi_ic_dish_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-xxxhdpi/ic_dish_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable_bottom_nav_selector.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/drawable/bottom_nav_selector.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-hdpi_ic_dish_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-hdpi/ic_dish_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable_ic_dashboard_black_24dp.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/drawable/ic_dashboard_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable_ic_notifications_black_24dp.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/drawable/ic_notifications_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable_octy.gif.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/drawable/octy.gif"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/navigation_mobile_navigation.xml.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/navigation/mobile_navigation.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-xxhdpi_ic_female_user_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-xxhdpi/ic_female_user_icon.png"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-merged_res-50:/drawable-hdpi_ic_add_to_favorites_icon.png.flat",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-pngs-45:/drawable-hdpi/ic_add_to_favorites_icon.png"
+    }
+]

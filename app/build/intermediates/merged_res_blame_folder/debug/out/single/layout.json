@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "com.ashu.ocotopus.app-mergeDebugResources-49:/layout/fragment_home.xml",
+        "source": "com.ashu.ocotopus.app-main-52:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-mergeDebugResources-49:/layout/fragment_home.xml",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-mergeDebugResources-49:/layout/activity_main.xml",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-mergeDebugResources-49:/layout/fragment_profile.xml",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-mergeDebugResources-49:/layout/dish_item.xml",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/dish_item.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-mergeDebugResources-49:/layout/fragment_hungry.xml",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/fragment_hungry.xml"
+    },
+    {
+        "merged": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-mergeDebugResources-49:/layout/fragment_favorite.xml",
+        "source": "/Users/ashutosh/.gradle/daemon/7.3.3/com.ashu.ocotopus.app-main-52:/layout/fragment_favorite.xml"
+    }
+]
