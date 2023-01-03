@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId "com.ashu.ocotopus"
         minSdk 21
-        targetSdk 32
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 
@@ -59,6 +59,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.8.1'
+    implementation "com.yuyakaido.android:card-stack-view:2.3.4"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
