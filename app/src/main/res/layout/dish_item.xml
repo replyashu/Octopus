@@ -17,12 +17,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_dish"
+            android:id="@+id/text_dish_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="sample 1"
             app:layout_constraintTop_toBottomOf="@id/image_dish"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
