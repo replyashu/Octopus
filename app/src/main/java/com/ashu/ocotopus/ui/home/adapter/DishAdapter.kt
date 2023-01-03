@@ -14,11 +14,13 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
 
     inner class DishViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val dishImage: AppCompatImageView
+        val dishName: AppCompatTextView
         val dishDescription: AppCompatTextView
 
         init {
             dishImage = view.findViewById(R.id.image_dish)
-            dishDescription = view.findViewById(R.id.text_dish_name)
+            dishName = view.findViewById(R.id.text_dish_name)
+            dishDescription = view.findViewById(R.id.text_dish_description)
         }
     }
 
@@ -32,7 +34,7 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
         holder.apply {
             Glide.with(dishImage.context).load(data?.dishUrl)
                 .error(R.drawable.octy).placeholder(R.drawable.octopus).into(dishImage)
-
+            dishName.text = data?.dishName
             dishDescription.text = data?.dishDescription
         }
     }
