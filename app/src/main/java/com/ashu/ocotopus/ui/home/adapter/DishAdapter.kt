@@ -18,7 +18,7 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
 
         init {
             dishImage = view.findViewById(R.id.image_dish)
-            dishDescription = view.findViewById(R.id.text_dish)
+            dishDescription = view.findViewById(R.id.text_dish_name)
         }
     }
 
