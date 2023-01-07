@@ -13,6 +13,10 @@ import com.bumptech.glide.Glide
 
 class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter.DishViewHolder>() {
 
+    interface OnItemClicked {
+        fun rateDish(position: Int, rating: Float)
+    }
+
     inner class DishViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val dishImage: AppCompatImageView
         val dishName: AppCompatTextView
@@ -20,7 +24,6 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
         val dishRating: AppCompatRatingBar
         val dishRateMe: AppCompatRatingBar
         val totalRating: AppCompatTextView
-
         init {
             dishImage = view.findViewById(R.id.image_dish)
             dishName = view.findViewById(R.id.text_dish_name)
@@ -30,6 +33,8 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
             totalRating = view.findViewById(R.id.text_total_rating)
         }
     }
+
+    private var itemClick: OnItemClicked? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.dish_item, parent, false)
@@ -46,9 +51,16 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
                 dishDescription.text = data.dishDescription
                 dishRating.rating = data.dishRating.toFloat()
                 totalRating.text = data.totalRatings.toString()
+
+                dishRateMe.setOnRatingBarChangeListener { ratingBar, rating, b ->
+                    itemClick?.rateDish(position, rating)
+                }
             }
         }
+    }
 
+    fun setItemClick(itemClick: OnItemClicked?) {
+        this.itemClick = itemClick
     }
 
     override fun getItemCount(): Int {
@@ -57,7 +69,6 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
 
     fun setDish(dish: Dish?) {
         this.dishData = dish
-        notifyDataSetChanged()
     }
 
     fun getDish(): Dish? {
