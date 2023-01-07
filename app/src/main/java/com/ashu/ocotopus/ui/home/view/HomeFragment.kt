@@ -18,7 +18,7 @@ import com.yuyakaido.android.cardstackview.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), CardStackListener {
+class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -46,6 +46,7 @@ class HomeFragment : Fragment(), CardStackListener {
             if (it.status == Status.SUCCESS) {
                 it.let {
                     dishAdapter = DishAdapter(it.data)
+                    dishAdapter!!.setItemClick(this)
                     binding.cardstackDish.adapter = dishAdapter
                 }
             }
@@ -62,13 +63,13 @@ class HomeFragment : Fragment(), CardStackListener {
         manager.setMaxDegree(20.0f)
         manager.setDirections(Direction.HORIZONTAL)
         manager.setCanScrollHorizontal(true)
-        manager.setCanScrollVertical(true)
+        manager.setCanScrollVertical(false)
         manager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
         manager.setOverlayInterpolator(LinearInterpolator())
         binding.cardstackDish.layoutManager = manager
         binding.cardstackDish.itemAnimator.apply {
             if (this is DefaultItemAnimator) {
-                supportsChangeAnimations = false
+                supportsChangeAnimations = true
             }
         }
     }
@@ -209,5 +210,9 @@ class HomeFragment : Fragment(), CardStackListener {
 
     override fun onCardDisappeared(view: View?, position: Int) {
         Log.d("CardStackView", "onCardDisappeared: ($position)")
+    }
+
+    override fun rateDish(position: Int, rating: Float) {
+        Log.d("rating found", rating.toString() + "  " + position)
     }
 }
