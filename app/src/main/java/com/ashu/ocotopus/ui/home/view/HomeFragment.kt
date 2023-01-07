@@ -62,13 +62,13 @@ class HomeFragment : Fragment(), CardStackListener {
         manager.setMaxDegree(20.0f)
         manager.setDirections(Direction.HORIZONTAL)
         manager.setCanScrollHorizontal(true)
-        manager.setCanScrollVertical(true)
+        manager.setCanScrollVertical(false)
         manager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
         manager.setOverlayInterpolator(LinearInterpolator())
         binding.cardstackDish.layoutManager = manager
         binding.cardstackDish.itemAnimator.apply {
             if (this is DefaultItemAnimator) {
-                supportsChangeAnimations = false
+                supportsChangeAnimations = true
             }
         }
     }

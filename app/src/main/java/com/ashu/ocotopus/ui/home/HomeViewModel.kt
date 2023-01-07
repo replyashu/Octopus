@@ -6,16 +6,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ashu.ocotopus.data.Dish
-import com.ashu.ocotopus.repository.MainRepository
+import com.ashu.ocotopus.repository.DishRepository
 import com.ashu.ocotopus.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
-import java.net.SocketTimeoutException
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(private val mainRepository: DishRepository) : ViewModel() {
 
     private val _resp = MutableLiveData<Resource<Dish>>()
 

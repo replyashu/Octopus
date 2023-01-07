@@ -6,5 +6,7 @@ data class DishItem(
     val dishName: String,
     val dishRating: Double,
     val dishType: String,
-    val dishUrl: String
+    val dishUrl: String,
+    val totalRatings: Long,
+    val isFavorite: Boolean
 )

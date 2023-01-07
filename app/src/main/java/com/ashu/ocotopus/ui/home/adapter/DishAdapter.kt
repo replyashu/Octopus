@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ashu.ocotopus.R
@@ -16,11 +17,17 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
         val dishImage: AppCompatImageView
         val dishName: AppCompatTextView
         val dishDescription: AppCompatTextView
+        val dishRating: AppCompatRatingBar
+        val dishRateMe: AppCompatRatingBar
+        val totalRating: AppCompatTextView
 
         init {
             dishImage = view.findViewById(R.id.image_dish)
             dishName = view.findViewById(R.id.text_dish_name)
             dishDescription = view.findViewById(R.id.text_dish_description)
+            dishRating = view.findViewById(R.id.dish_rating)
+            dishRateMe = view.findViewById(R.id.dish_rate_it)
+            totalRating = view.findViewById(R.id.text_total_rating)
         }
     }
 
@@ -31,12 +38,17 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
 
     override fun onBindViewHolder(holder: DishViewHolder, position: Int) {
         val data = dishData?.get(position)
-        holder.apply {
-            Glide.with(dishImage.context).load(data?.dishUrl)
-                .error(R.drawable.octy).placeholder(R.drawable.octopus).into(dishImage)
-            dishName.text = data?.dishName
-            dishDescription.text = data?.dishDescription
+        data?.let {
+            holder.apply {
+                Glide.with(dishImage.context).load(data.dishUrl)
+                    .error(R.drawable.octopus).placeholder(R.drawable.octopus).into(dishImage)
+                dishName.text = data.dishName
+                dishDescription.text = data.dishDescription
+                dishRating.rating = data.dishRating.toFloat()
+                totalRating.text = data.totalRatings.toString()
+            }
         }
+
     }
 
     override fun getItemCount(): Int {
