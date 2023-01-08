@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ashu.ocotopus.R
 import com.ashu.ocotopus.data.Dish
+import com.ashu.ocotopus.util.toSinglePrecision
 import com.bumptech.glide.Glide
 
 class DishAdapter(private var dishData: Dish?) :
@@ -53,6 +54,7 @@ class DishAdapter(private var dishData: Dish?) :
                 dishDescription.text = data.dishDescription
                 dishRating.rating = data.dishRating!!.toFloat()
                 totalRating.text = buildString {
+                    append(data.dishRating!!.toSinglePrecision())
                     append("(")
                     append(data.totalRatings.toString())
                     append(")")
@@ -60,6 +62,7 @@ class DishAdapter(private var dishData: Dish?) :
 
                 dishRateMe.setOnRatingBarChangeListener { ratingBar, rating, b ->
                     itemClick?.rateDish(position, rating, data.dishId)
+                    dishRateMe.visibility = View.GONE
                 }
             }
         }
