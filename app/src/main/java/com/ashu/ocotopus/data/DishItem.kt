@@ -2,11 +2,11 @@ package com.ashu.ocotopus.data
 
 data class DishItem(
     val dishDescription: String,
-    val dishId: Int,
+    val dishId: Long,
     val dishName: String,
-    val dishRating: Double,
+    var dishRating: Double? = 0.0,
     val dishType: String,
     val dishUrl: String,
-    val totalRatings: Long,
+    var totalRatings: Long? = 0,
     val isFavorite: Boolean
 )

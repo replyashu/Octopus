@@ -14,6 +14,7 @@ class GzipInterceptor : Interceptor {
         }
         val compressedRequest: Request = originalRequest.newBuilder()
             .header("Content-Encoding", "gzip")
+            .header("Accept-Encoding", "gzip")
             .method(originalRequest.method, originalRequest.body?.let { gzip(it) })
             .build()
         return chain.proceed(compressedRequest)

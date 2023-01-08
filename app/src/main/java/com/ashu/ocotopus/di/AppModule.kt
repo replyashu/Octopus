@@ -31,7 +31,7 @@ object AppModule {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         OkHttpClient.Builder()
             .addNetworkInterceptor(loggingInterceptor)
-            .addInterceptor(gzipInterceptor)
+//            .addInterceptor()
             .build()
     }else{
         OkHttpClient
