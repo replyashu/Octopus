@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide
 class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter.DishViewHolder>() {
 
     interface OnItemClicked {
-        fun rateDish(position: Int, rating: Float)
+        fun rateDish(position: Int, rating: Float, dishId: Long)
     }
 
     inner class DishViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -49,11 +49,11 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
                     .error(R.drawable.octopus).placeholder(R.drawable.octopus).into(dishImage)
                 dishName.text = data.dishName
                 dishDescription.text = data.dishDescription
-                dishRating.rating = data.dishRating.toFloat()
+                dishRating.rating = data.dishRating!!.toFloat()
                 totalRating.text = data.totalRatings.toString()
 
                 dishRateMe.setOnRatingBarChangeListener { ratingBar, rating, b ->
-                    itemClick?.rateDish(position, rating)
+                    itemClick?.rateDish(position, rating, data.dishId)
                 }
             }
         }
@@ -69,6 +69,12 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
 
     fun setDish(dish: Dish?) {
         this.dishData = dish
+    }
+
+    fun updateRating(position: Int, rating: Double?, totalRating: Long?) {
+        this.dishData?.get(position)?.dishRating = rating
+        this.dishData?.get(position)?.totalRatings = totalRating
+        notifyItemChanged(position)
     }
 
     fun getDish(): Dish? {

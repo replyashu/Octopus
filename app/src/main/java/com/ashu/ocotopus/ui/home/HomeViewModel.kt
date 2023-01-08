@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ashu.ocotopus.data.Dish
+import com.ashu.ocotopus.data.requests.RateDish
+import com.ashu.ocotopus.data.responses.DishRating
 import com.ashu.ocotopus.repository.DishRepository
 import com.ashu.ocotopus.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,12 +16,16 @@ import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val mainRepository: DishRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(private val dishRepository: DishRepository) : ViewModel() {
 
     private val _resp = MutableLiveData<Resource<Dish>>()
+    private val _rating = MutableLiveData<Resource<DishRating>>()
 
     val res : LiveData<Resource<Dish>>
         get() = _resp
+
+    val rating: LiveData<Resource<DishRating>>
+        get() = _rating
 
     init {
         getDishes()
@@ -29,11 +35,27 @@ class HomeViewModel @Inject constructor(private val mainRepository: DishReposito
         _resp.postValue(Resource.loading(null))
 
         try {
-            mainRepository.fetchDishes().let {
+            dishRepository.fetchDishes().let {
                 if (it.isSuccessful) {
                     _resp.postValue(Resource.success(it.body()))
                 } else {
                     _resp.postValue(Resource.error(it.errorBody().toString(), null))
+                }
+            }
+        } catch (error: Exception) {
+            Log.d("errorr", error.toString())
+        }
+
+    }
+
+    fun rateDish(rateDish: RateDish) = viewModelScope.launch {
+        _rating.postValue(Resource.loading(null))
+        try {
+            dishRepository.rateDish(rateDish). let {
+                if (it.isSuccessful) {
+                    _rating.postValue(Resource.success(it.body()))
+                } else {
+                    _rating.postValue(Resource.error(it.errorBody().toString(), null))
                 }
             }
         } catch (error: Exception) {
