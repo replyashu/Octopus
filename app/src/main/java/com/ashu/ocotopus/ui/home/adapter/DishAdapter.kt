@@ -11,19 +11,21 @@ import com.ashu.ocotopus.R
 import com.ashu.ocotopus.data.Dish
 import com.bumptech.glide.Glide
 
-class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter.DishViewHolder>() {
+class DishAdapter(private var dishData: Dish?) :
+    RecyclerView.Adapter<DishAdapter.DishViewHolder>() {
 
     interface OnItemClicked {
         fun rateDish(position: Int, rating: Float, dishId: Long)
     }
 
-    inner class DishViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    inner class DishViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val dishImage: AppCompatImageView
         val dishName: AppCompatTextView
         val dishDescription: AppCompatTextView
         val dishRating: AppCompatRatingBar
         val dishRateMe: AppCompatRatingBar
         val totalRating: AppCompatTextView
+
         init {
             dishImage = view.findViewById(R.id.image_dish)
             dishName = view.findViewById(R.id.text_dish_name)
@@ -50,7 +52,11 @@ class DishAdapter(private var dishData: Dish?): RecyclerView.Adapter<DishAdapter
                 dishName.text = data.dishName
                 dishDescription.text = data.dishDescription
                 dishRating.rating = data.dishRating!!.toFloat()
-                totalRating.text = data.totalRatings.toString()
+                totalRating.text = buildString {
+                    append("(")
+                    append(data.totalRatings.toString())
+                    append(")")
+                }
 
                 dishRateMe.setOnRatingBarChangeListener { ratingBar, rating, b ->
                     itemClick?.rateDish(position, rating, data.dishId)
