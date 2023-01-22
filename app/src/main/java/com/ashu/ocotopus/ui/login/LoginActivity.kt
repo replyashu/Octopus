@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ashu.ocotopus.MainActivity
 import com.ashu.ocotopus.R
 import com.ashu.ocotopus.databinding.ActivityLoginBinding
+import com.ashu.ocotopus.util.Keys
 import com.ashu.ocotopus.util.Status
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
@@ -44,7 +45,7 @@ class LoginActivity: AppCompatActivity(), View.OnClickListener {
         setContentView(binding?.root)
 
         oneTapClient = Identity.getSignInClient(this)
-        signInRequest = viewModel.getSigninRequest(getString(R.string.web_client))
+        signInRequest = viewModel.getSigninRequest(Keys.webClientKey())
 
        binding?.googleButton?.setOnClickListener(this)
 

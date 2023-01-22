@@ -1,7 +1,6 @@
 package com.ashu.ocotopus.ui.home.view
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,6 +16,8 @@ import com.ashu.ocotopus.databinding.FragmentHomeBinding
 import com.ashu.ocotopus.ui.home.HomeViewModel
 import com.ashu.ocotopus.ui.home.adapter.DishAdapter
 import com.ashu.ocotopus.util.Status
+import com.bumptech.glide.Glide
+import com.ashu.ocotopus.R
 import com.yuyakaido.android.cardstackview.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,8 +35,11 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
 
     val sharedpreferences by lazy { context?.getSharedPreferences("preference_key", Context.MODE_PRIVATE) }
 
+    var manager: CardStackLayoutManager? = null
+
     private var isRightSwiped = false
 
+    private var pos: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,37 +48,46 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        manager = CardStackLayoutManager(context, this)
+        initialize()
         setUpUIElements()
         return root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getDishes()
+    }
+
     private fun setUpUIElements() {
-        initialize()
         viewModel.res.observe(viewLifecycleOwner) {
             if (it.status == Status.SUCCESS) {
                 it.let {
+                    binding.cardstackDish.layoutManager = manager
                     dishAdapter = DishAdapter(it.data)
                     dishAdapter!!.setItemClick(this)
                     binding.cardstackDish.adapter = dishAdapter
+                }
+
+                if (it == null) {
+                    checkEmpty()
                 }
             }
         }
     }
 
     private fun initialize() {
-        val manager = CardStackLayoutManager(context, this)
 //        manager.setStackFrom(StackFrom.None)
-        manager.setVisibleCount(100)
-        manager.setTranslationInterval(8.0f)
-        manager.setScaleInterval(0.95f)
-        manager.setSwipeThreshold(0.3f)
-        manager.setMaxDegree(20.0f)
-        manager.setDirections(Direction.HORIZONTAL)
-        manager.setCanScrollHorizontal(true)
-        manager.setCanScrollVertical(false)
-        manager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
-        manager.setOverlayInterpolator(LinearInterpolator())
-        binding.cardstackDish.layoutManager = manager
+        manager?.setVisibleCount(100)
+        manager?.setTranslationInterval(8.0f)
+        manager?.setScaleInterval(0.95f)
+        manager?.setSwipeThreshold(0.3f)
+        manager?.setMaxDegree(20.0f)
+        manager?.setDirections(Direction.HORIZONTAL)
+        manager?.setCanScrollHorizontal(true)
+        manager?.setCanScrollVertical(false)
+        manager?.setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
+        manager?.setOverlayInterpolator(LinearInterpolator())
         binding.cardstackDish.itemAnimator.apply {
             if (this is DefaultItemAnimator) {
                 supportsChangeAnimations = true
@@ -202,18 +215,25 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
 //        if (manager.topPosition == dishAdapter!!.itemCount - 5) {
 //            paginate()
 //        }
+
+        Log.d("CardStackView", "onCardSwiped: = $direction")
         direction?.let {
-            if (direction.name.equals(Direction.Right.name)) {
-                Log.d("moved", "m")
-                isRightSwiped = true
-//                viewModel.markAsFavorite(sharedpreferences.getString("user_uuid", null)
+            if (direction.name == Direction.Right.name) {
+                Log.d("CardStackView", "m")
+                viewModel.markAsFavorite(sharedpreferences?.getString("user_uuid", null),
+                    pos)
             }
+        }
+
+        if (manager?.topPosition == dishAdapter?.itemCount) {
+            checkEmpty()
         }
 
     }
 
     override fun onCardRewound() {
 //        Log.d("CardStackView", "onCardRewound: ${manager.topPosition}")
+
     }
 
     override fun onCardCanceled() {
@@ -222,15 +242,11 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
 
     override fun onCardAppeared(view: View?, position: Int) {
         Log.d("CardStackView", "onCardAppeared: ($position)")
-        if (isRightSwiped) {
-            isRightSwiped = false
-            viewModel.markAsFavorite(sharedpreferences?.getString("user_uuid", null),
-            position - 1)
-        }
     }
 
     override fun onCardDisappeared(view: View?, position: Int) {
         Log.d("CardStackView", "onCardDisappeared: ($position)")
+        pos = position
     }
 
     override fun rateDish(position: Int, rating: Float, dishId: Long) {
@@ -244,5 +260,18 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
                 }
             }
         })
+    }
+
+    private fun checkEmpty() {
+        binding.cardstackDish.visibility = View.GONE
+        Glide.with(requireContext()).load(R.drawable.empty_plate).into(binding.imageEmptyView)
+        binding.imageEmptyView.visibility = View.VISIBLE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (manager != null) {
+            manager = null
+        }
     }
 }

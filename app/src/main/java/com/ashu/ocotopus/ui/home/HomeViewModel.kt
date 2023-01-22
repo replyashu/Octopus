@@ -32,11 +32,7 @@ class HomeViewModel @Inject constructor(private val dishRepository: DishReposito
     val mark: LiveData<Resource<Boolean>>
         get() = _mark
 
-    init {
-        getDishes()
-    }
-
-    private fun getDishes() = viewModelScope.launch {
+    fun getDishes() = viewModelScope.launch {
         _resp.postValue(Resource.loading(null))
 
         try {
