@@ -1,15 +1,13 @@
 package com.ashu.ocotopus.ui.login
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ashu.ocotopus.R
-import com.ashu.ocotopus.data.Dish
 import com.ashu.ocotopus.data.requests.RegisterUser
-import com.ashu.ocotopus.data.responses.DishRating
 import com.ashu.ocotopus.data.responses.RegisterResponse
 import com.ashu.ocotopus.repository.UserRepository
 import com.ashu.ocotopus.util.Resource
@@ -17,6 +15,7 @@ import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
+import dagger.hilt.android.internal.Contexts.getApplication
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,7 +29,7 @@ class LoginViewModel @Inject constructor(private val userRepository: UserReposit
     val register: LiveData<Resource<RegisterResponse>>
         get() = _register
 
-    fun registerUser(registerUser: RegisterUser) = viewModelScope.launch {
+    private fun registerUser(registerUser: RegisterUser) = viewModelScope.launch {
         _register.postValue(Resource.loading(null))
         try {
             userRepository.registerUser(registerUser). let {
