@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "482515387278",
+    "project_id": "octopus-375417",
+    "storage_bucket": "octopus-375417.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482515387278:android:db17ae4f993c1b26c2dadf",
+        "android_client_info": {
+          "package_name": "com.ashu.ocotopus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482515387278-5tn82i4d214j2iededhhkhgl8m0b9pig.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ashu.ocotopus",
+            "certificate_hash": "5da300bc7e97bab7020c455a5c7db322b6d23829"
+          }
+        },
+        {
+          "client_id": "482515387278-0i3ckv6orr20fqn6lrqjqt5lnlrrgl9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjd1h9_Bh24d8tC54ZpNI5Zaj44mP7rlc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482515387278-0i3ckv6orr20fqn6lrqjqt5lnlrrgl9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

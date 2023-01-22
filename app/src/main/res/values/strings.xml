@@ -7,4 +7,6 @@
     <string name="favorite">Favorites</string>
     <string name="hungry">Hungry Me</string>
     <string name="profile">Profile</string>
+
+    <string name="web_client" translatable="false">482515387278-0i3ckv6orr20fqn6lrqjqt5lnlrrgl9j.apps.googleusercontent.com</string>
 </resources>
