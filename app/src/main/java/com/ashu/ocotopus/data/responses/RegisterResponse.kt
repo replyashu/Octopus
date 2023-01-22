@@ -3,6 +3,8 @@ package com.ashu.ocotopus.data.responses
 import com.google.gson.annotations.SerializedName
 
 data class RegisterResponse (
+    @SerializedName("userUid")
+    val userUid: String? = null,
     @SerializedName("name")
     val name: String? = null,
     @SerializedName("email")

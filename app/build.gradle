@@ -9,6 +9,12 @@ android {
 
     compileSdk 33
 
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
     lintOptions {
         checkReleaseBuilds false
         //If you want to continue even if errors found use following line
