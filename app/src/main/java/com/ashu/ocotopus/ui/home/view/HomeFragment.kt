@@ -43,7 +43,7 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
 
     private fun setUpUIElements() {
         initialize()
-        viewModel.res.observe(viewLifecycleOwner, Observer {
+        viewModel.res.observe(viewLifecycleOwner) {
             if (it.status == Status.SUCCESS) {
                 it.let {
                     dishAdapter = DishAdapter(it.data)
@@ -51,7 +51,7 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
                     binding.cardstackDish.adapter = dishAdapter
                 }
             }
-        })
+        }
     }
 
     private fun initialize() {

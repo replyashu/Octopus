@@ -3,7 +3,7 @@ package com.ashu.ocotopus.util
 data class Resource<out T>(
     val status: Status,
     val data: T?,
-    val message:String?
+    val message:String?,
 ){
     companion object{
 
@@ -17,6 +17,10 @@ data class Resource<out T>(
 
         fun <T> loading(data:T?): Resource<T>{
             return Resource(Status.LOADING, data, null)
+        }
+
+        fun <T> alreadyRegistered(msg: String?, data: T?): Resource<T> {
+            return Resource(Status.ALREADY_REGISTERED, data, message = msg)
         }
 
     }

@@ -11,9 +11,9 @@ import retrofit2.http.POST
 
 interface DishApiService {
 
-    @GET("http://10.0.2.2:8083/dish")
+    @GET("dish")
     suspend fun fetchDishes(): Response<Dish>
 
-    @POST("http://10.0.2.2:8083/dish/rate")
+    @POST("dish/rate")
     suspend fun rateDish(@Body rateDish: RateDish): Response<DishRating>
 }
