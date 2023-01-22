@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ashu.ocotopus.data.Dish
+import com.ashu.ocotopus.data.requests.MarkFavoriteDish
 import com.ashu.ocotopus.data.requests.RateDish
 import com.ashu.ocotopus.data.responses.DishRating
 import com.ashu.ocotopus.repository.DishRepository
@@ -20,12 +21,16 @@ class HomeViewModel @Inject constructor(private val dishRepository: DishReposito
 
     private val _resp = MutableLiveData<Resource<Dish>>()
     private val _rating = MutableLiveData<Resource<DishRating>>()
+    private val _mark = MutableLiveData<Resource<Boolean>>()
 
     val res : LiveData<Resource<Dish>>
         get() = _resp
 
     val rating: LiveData<Resource<DishRating>>
         get() = _rating
+
+    val mark: LiveData<Resource<Boolean>>
+        get() = _mark
 
     init {
         getDishes()
@@ -56,6 +61,22 @@ class HomeViewModel @Inject constructor(private val dishRepository: DishReposito
                     _rating.postValue(Resource.success(it.body()))
                 } else {
                     _rating.postValue(Resource.error(it.errorBody().toString(), null))
+                }
+            }
+        } catch (error: Exception) {
+            Log.d("errorr", error.toString())
+        }
+
+    }
+
+    fun markAsFavorite(userUid: String?, position: Int) = viewModelScope.launch {
+        _mark.postValue(Resource.loading(null))
+        try {
+            dishRepository.markAsFavorite(MarkFavoriteDish(userUid, position)).let {
+                if (it.isSuccessful) {
+                    _mark.postValue(Resource.success(it.body()))
+                } else {
+                    _mark.postValue(Resource.error(it.errorBody().toString(), null))
                 }
             }
         } catch (error: Exception) {

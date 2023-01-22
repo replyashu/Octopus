@@ -1,25 +1,23 @@
 package com.ashu.ocotopus.ui.login
 
+import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.ashu.ocotopus.MainActivity
 import com.ashu.ocotopus.R
-import com.ashu.ocotopus.data.requests.RegisterUser
 import com.ashu.ocotopus.databinding.ActivityLoginBinding
-import com.ashu.ocotopus.databinding.FragmentHomeBinding
 import com.ashu.ocotopus.util.Status
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.CommonStatusCodes
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,6 +35,8 @@ class LoginActivity: AppCompatActivity(), View.OnClickListener {
     // onDestroyView.
     private val binding get() = _binding
 
+    val sharedpreferences by lazy { getSharedPreferences("preference_key", Context.MODE_PRIVATE) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -52,10 +52,12 @@ class LoginActivity: AppCompatActivity(), View.OnClickListener {
            when(it.status) {
                Status.ALREADY_REGISTERED -> {
                    Toast.makeText(this, it.message + "  " + it.data, Toast.LENGTH_LONG).show()
+                   sharedpreferences.edit().putString("user_uuid", it.data?.userUid).apply()
                    showDashBoard()
                }
                Status.SUCCESS -> {
                    Toast.makeText(this, "Welcome New User", Toast.LENGTH_LONG).show()
+                   sharedpreferences.edit().putString("user_uuid", it.data?.userUid).apply()
                    showDashBoard()
                }
                Status.ERROR ->

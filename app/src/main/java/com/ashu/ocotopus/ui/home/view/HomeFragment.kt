@@ -1,5 +1,7 @@
 package com.ashu.ocotopus.ui.home.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -29,6 +31,11 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
     private val viewModel by viewModels<HomeViewModel>()
 
     private var dishAdapter: DishAdapter? = DishAdapter(null)
+
+    val sharedpreferences by lazy { context?.getSharedPreferences("preference_key", Context.MODE_PRIVATE) }
+
+    private var isRightSwiped = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -195,6 +202,14 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
 //        if (manager.topPosition == dishAdapter!!.itemCount - 5) {
 //            paginate()
 //        }
+        direction?.let {
+            if (direction.name.equals(Direction.Right.name)) {
+                Log.d("moved", "m")
+                isRightSwiped = true
+//                viewModel.markAsFavorite(sharedpreferences.getString("user_uuid", null)
+            }
+        }
+
     }
 
     override fun onCardRewound() {
@@ -207,6 +222,11 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
 
     override fun onCardAppeared(view: View?, position: Int) {
         Log.d("CardStackView", "onCardAppeared: ($position)")
+        if (isRightSwiped) {
+            isRightSwiped = false
+            viewModel.markAsFavorite(sharedpreferences?.getString("user_uuid", null),
+            position - 1)
+        }
     }
 
     override fun onCardDisappeared(view: View?, position: Int) {
