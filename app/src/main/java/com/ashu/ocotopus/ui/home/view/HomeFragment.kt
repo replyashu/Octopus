@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -18,6 +19,10 @@ import com.ashu.ocotopus.ui.home.adapter.DishAdapter
 import com.ashu.ocotopus.util.Status
 import com.bumptech.glide.Glide
 import com.ashu.ocotopus.R
+import com.ashu.ocotopus.data.requests.NotificationToken
+import com.ashu.ocotopus.ui.login.LoginViewModel
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.yuyakaido.android.cardstackview.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +35,6 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
     // onDestroyView.
     private val binding get() = _binding!!
     private val viewModel by viewModels<HomeViewModel>()
-
     private var dishAdapter: DishAdapter? = DishAdapter(null)
 
     val sharedpreferences by lazy { context?.getSharedPreferences("preference_key", Context.MODE_PRIVATE) }

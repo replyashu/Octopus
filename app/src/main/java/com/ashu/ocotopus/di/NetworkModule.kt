@@ -23,11 +23,15 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideBaseUrl() = Constant.BASE_URL
+    fun provideBaseUrl() = if (BuildConfig.BUILD_TYPE == "emulator") {
+        Constant.BASE_URL_EMULATOR
+    } else {
+        Constant.BASE_URL
+    }
 
     @Singleton
     @Provides
-    fun provideOkHttpClient() = if (BuildConfig.DEBUG){
+    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
         val loggingInterceptor = HttpLoggingInterceptor()
         val gzipInterceptor = GzipInterceptor()
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -35,7 +39,7 @@ object NetworkModule {
             .addNetworkInterceptor(loggingInterceptor)
 //            .addInterceptor()
             .build()
-    }else{
+    } else {
         OkHttpClient
             .Builder()
             .build()
