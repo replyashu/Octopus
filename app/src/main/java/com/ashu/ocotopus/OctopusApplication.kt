@@ -9,6 +9,7 @@ class OctopusApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
+
         AnalyzeApp.init(this)
     }
 }

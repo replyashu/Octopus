@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ashu.ocotopus.data.requests.NotificationToken
 import com.ashu.ocotopus.data.requests.RegisterUser
 import com.ashu.ocotopus.data.responses.RegisterResponse
 import com.ashu.ocotopus.repository.UserRepository
@@ -26,8 +27,29 @@ class LoginViewModel @Inject constructor(private val userRepository: UserReposit
     private var showOneTapUI = true
     private val _register = MutableLiveData<Resource<RegisterResponse>>()
 
+    private val _push = MutableLiveData<Resource<Boolean>>()
+
     val register: LiveData<Resource<RegisterResponse>>
         get() = _register
+
+    val push: LiveData<Resource<Boolean>>
+        get() = _push
+
+    fun updateToken(notificationToken: NotificationToken) = viewModelScope.launch {
+        _push.postValue(Resource.loading(null))
+        try {
+            userRepository.updateNotificationToken(notificationToken).let {
+                if (it.isSuccessful) {
+                    _push.postValue(Resource.success(true))
+                } else {
+                    _push.postValue(Resource.error(it.errorBody().toString(), null))
+                }
+            }
+        } catch (e: Exception) {
+            Log.d("updation of token", "tokenizer kahin ka failed")
+        }
+
+    }
 
     private fun registerUser(registerUser: RegisterUser) = viewModelScope.launch {
         _register.postValue(Resource.loading(null))

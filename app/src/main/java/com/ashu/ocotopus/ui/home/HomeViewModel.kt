@@ -23,6 +23,7 @@ class HomeViewModel @Inject constructor(private val dishRepository: DishReposito
     private val _rating = MutableLiveData<Resource<DishRating>>()
     private val _mark = MutableLiveData<Resource<Boolean>>()
 
+
     val res : LiveData<Resource<Dish>>
         get() = _resp
 
@@ -80,9 +81,4 @@ class HomeViewModel @Inject constructor(private val dishRepository: DishReposito
         }
 
     }
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
 }
