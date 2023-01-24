@@ -14,4 +14,7 @@ interface UserApiService {
 
     @POST("user/enable-push")
     suspend fun updateNotificationToken(@Body notificationToken: NotificationToken): Response<Boolean>
+
+    @POST("user/notify")
+    suspend fun sendNotificationToAll(): Response<Boolean>
 }

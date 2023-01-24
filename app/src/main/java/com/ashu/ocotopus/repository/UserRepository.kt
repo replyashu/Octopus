@@ -11,4 +11,6 @@ class UserRepository @Inject constructor(private val userAPiHelper: UserAPiHelpe
 
     suspend fun updateNotificationToken(notificationToken: NotificationToken) = userAPiHelper.updateNotificationToken(notificationToken)
 
+    suspend fun sendNotifications() = userAPiHelper.sendNotificationToAll()
+
 }
