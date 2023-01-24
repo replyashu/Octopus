@@ -10,4 +10,6 @@ interface UserAPiHelper {
     suspend fun registerNewUser(registerUser: RegisterUser): Response<RegisterResponse>
 
     suspend fun updateNotificationToken(notificationToken: NotificationToken): Response<Boolean>
+
+    suspend fun sendNotificationToAll(): Response<Boolean>
 }

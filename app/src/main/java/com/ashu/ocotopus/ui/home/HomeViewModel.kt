@@ -10,6 +10,7 @@ import com.ashu.ocotopus.data.requests.MarkFavoriteDish
 import com.ashu.ocotopus.data.requests.RateDish
 import com.ashu.ocotopus.data.responses.DishRating
 import com.ashu.ocotopus.repository.DishRepository
+import com.ashu.ocotopus.repository.UserRepository
 import com.ashu.ocotopus.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,7 +18,7 @@ import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val dishRepository: DishRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(private val dishRepository: DishRepository, private val userRepository: UserRepository) : ViewModel() {
 
     private val _resp = MutableLiveData<Resource<Dish>>()
     private val _rating = MutableLiveData<Resource<DishRating>>()
@@ -47,7 +48,10 @@ class HomeViewModel @Inject constructor(private val dishRepository: DishReposito
         } catch (error: Exception) {
             Log.d("errorr", error.toString())
         }
+    }
 
+    fun sendNotificationToAll() = viewModelScope.launch {
+        userRepository.sendNotifications()
     }
 
     fun rateDish(rateDish: RateDish) = viewModelScope.launch {
