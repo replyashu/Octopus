@@ -3,7 +3,6 @@ package com.ashu.ocotopus.ui.login
 import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.ashu.ocotopus.MainActivity
 import com.ashu.ocotopus.R
+import com.ashu.ocotopus.data.requests.NotificationToken
 import com.ashu.ocotopus.databinding.ActivityLoginBinding
 import com.ashu.ocotopus.util.Keys
 import com.ashu.ocotopus.util.Status
@@ -19,10 +19,14 @@ import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
+import com.truecaller.android.sdk.*
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
-class LoginActivity: AppCompatActivity(), View.OnClickListener {
+class LoginActivity: AppCompatActivity(), View.OnClickListener, ITrueCallback {
 
     private lateinit var oneTapClient: SignInClient
     private lateinit var signInRequest: BeginSignInRequest
@@ -47,27 +51,33 @@ class LoginActivity: AppCompatActivity(), View.OnClickListener {
         oneTapClient = Identity.getSignInClient(this)
         signInRequest = viewModel.getSigninRequest(Keys.webClientKey())
 
-       binding?.googleButton?.setOnClickListener(this)
+        binding?.googleButton?.setOnClickListener(this)
 
-       viewModel.register.observe(this) {
-           when(it.status) {
-               Status.ALREADY_REGISTERED -> {
-                   Toast.makeText(this, it.message + "  " + it.data, Toast.LENGTH_LONG).show()
-                   sharedpreferences.edit().putString("user_uuid", it.data?.userUid).apply()
-                   showDashBoard()
-               }
-               Status.SUCCESS -> {
-                   Toast.makeText(this, "Welcome New User", Toast.LENGTH_LONG).show()
-                   sharedpreferences.edit().putString("user_uuid", it.data?.userUid).apply()
-                   showDashBoard()
-               }
-               Status.ERROR ->
-                   Toast.makeText(this, "Some error" + it.message, Toast.LENGTH_LONG).show()
-               else -> {
+        initializeTruecaller()
 
-               }
-           }
-       }
+        binding?.loginWithTruecaller?.setOnClickListener(this)
+
+        viewModel.register.observe(this) {
+            when(it.status) {
+                Status.ALREADY_REGISTERED -> {
+                    Toast.makeText(this, it.message + "  " + it.data, Toast.LENGTH_LONG).show()
+                    sharedpreferences.edit().putString("user_uuid", it.data?.userUid).apply()
+                    retrieveFirebaseNotificationToken(it.data?.userUid)
+                    showDashBoard()
+                }
+                Status.SUCCESS -> {
+                    Toast.makeText(this, "Welcome New User", Toast.LENGTH_LONG).show()
+                    sharedpreferences.edit().putString("user_uuid", it.data?.userUid).apply()
+                    retrieveFirebaseNotificationToken(it.data?.userUid)
+                    showDashBoard()
+                }
+                Status.ERROR ->
+                    Toast.makeText(this, "Some error" + it.message, Toast.LENGTH_LONG).show()
+                else -> {
+
+                }
+            }
+        }
     }
 
     private fun googleSignIn() {
@@ -98,6 +108,13 @@ class LoginActivity: AppCompatActivity(), View.OnClickListener {
                     viewModel.handleLoginException(e)
                 }
             }
+
+            TruecallerSDK.SHARE_PROFILE_REQUEST_CODE -> {
+                if (TruecallerSDK.getInstance().isUsable) {
+                    TruecallerSDK.getInstance()
+                        .onActivityResultObtained(this, requestCode, resultCode, data)
+                }
+            }
         }
     }
 
@@ -105,11 +122,82 @@ class LoginActivity: AppCompatActivity(), View.OnClickListener {
         when(v?.id) {
             R.id.google_button ->
                 googleSignIn()
+            R.id.login_with_truecaller -> {
+                if (TruecallerSDK.getInstance().isUsable) {
+                    TruecallerSDK.getInstance().getUserProfile(this);
+                }
+            }
         }
     }
 
     private fun showDashBoard() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
+    }
+
+    private fun initializeTruecaller() {
+        val trueScope = TruecallerSdkScope.Builder(this, this)
+            .consentMode(TruecallerSdkScope.CONSENT_MODE_BOTTOMSHEET)
+            .buttonColor(R.color.green)
+            .buttonTextColor(R.color.black)
+            .loginTextPrefix(TruecallerSdkScope.LOGIN_TEXT_PREFIX_TO_GET_STARTED)
+            .loginTextSuffix(TruecallerSdkScope.LOGIN_TEXT_SUFFIX_PLEASE_VERIFY_MOBILE_NO)
+            .ctaTextPrefix(TruecallerSdkScope.CTA_TEXT_PREFIX_USE)
+            .buttonShapeOptions(TruecallerSdkScope.BUTTON_SHAPE_ROUNDED)
+            .footerType(TruecallerSdkScope.FOOTER_TYPE_NONE)
+            .consentTitleOption(TruecallerSdkScope.SDK_CONSENT_TITLE_LOG_IN)
+            .sdkOptions(TruecallerSdkScope.SDK_OPTION_WITH_OTP)
+            .build()
+
+        TruecallerSDK.init(trueScope)
+    }
+
+    override fun onSuccessProfileShared(p0: TrueProfile) {
+        Log.d("trueprofile", p0.toString())
+    }
+
+    override fun onFailureProfileShared(p0: TrueError) {
+        Log.d("trueprofile", p0.toString())
+        when (p0.errorType) {
+            TrueError.ERROR_TYPE_INTERNAL -> {
+                Log.d("trueprofile", "internal")
+            }
+            TrueError.ERROR_TYPE_NETWORK -> {
+                Log.d("trueprofile", "network")
+            }
+            TrueError.ERROR_TYPE_USER_DENIED -> {
+                Log.d("trueprofile", "denied")
+            }
+            TrueError.ERROR_PROFILE_NOT_FOUND -> {
+                Log.d("trueprofile", "profile")
+            }
+        }
+    }
+
+    override fun onVerificationRequired(p0: TrueError?) {
+        Log.d("trueprofile", p0.toString())
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        TruecallerSDK.clear();
+    }
+
+    private fun retrieveFirebaseNotificationToken(userId: String?) {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("message token", "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+            sharedpreferences.edit().putString("user_token", token).apply()
+            viewModel.updateToken(NotificationToken(userId, token.toString()))
+            // Log and toast
+            val msg = token
+            Log.d("Token", msg)
+            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+        })
     }
 }

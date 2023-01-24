@@ -8,5 +8,7 @@
     <string name="hungry">Hungry Me</string>
     <string name="profile">Profile</string>
 
-    <string name="web_client" translatable="false">482515387278-0i3ckv6orr20fqn6lrqjqt5lnlrrgl9j.apps.googleusercontent.com</string>
+
+    <string name="truecaller_key">5B5L0d5f74f76bc92475ba657984bcb2c7ff6</string>
+
 </resources>
