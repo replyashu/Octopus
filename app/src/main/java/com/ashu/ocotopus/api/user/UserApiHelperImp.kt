@@ -13,4 +13,6 @@ class UserApiHelperImp @Inject constructor(private val userApiService: UserApiSe
 
     override suspend fun updateNotificationToken(notificationToken: NotificationToken): Response<Boolean> =
         userApiService.updateNotificationToken(notificationToken)
+
+    override suspend fun sendNotificationToAll(): Response<Boolean> = userApiService.sendNotificationToAll()
 }
