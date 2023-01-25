@@ -46,7 +46,7 @@ class HomeViewModel @Inject constructor(private val dishRepository: DishReposito
                 }
             }
         } catch (error: Exception) {
-            Log.d("errorr", error.toString())
+            Log.d("error", error.toString())
         }
     }
 

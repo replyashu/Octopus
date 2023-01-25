@@ -11,5 +11,7 @@ class DishRepository @Inject constructor(private val dishApiHelper: DishApiHelpe
 
     suspend fun rateDish(rateDish: RateDish) = dishApiHelper.rateDish(rateDish = rateDish)
 
+    suspend fun fetchFavorites(userId: String?) = dishApiHelper.fetchFavorites(userId)
+
     suspend fun markAsFavorite(markFavoriteDish: MarkFavoriteDish) = dishApiHelper.markAsFavorite(markFavoriteDish)
 }

@@ -73,7 +73,7 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
                     binding.cardstackDish.adapter = dishAdapter
                 }
 
-                viewModel.sendNotificationToAll()
+//                viewModel.sendNotificationToAll()
                 if (it == null) {
                     checkEmpty()
                 }
