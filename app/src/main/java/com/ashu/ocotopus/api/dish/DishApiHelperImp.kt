@@ -14,5 +14,9 @@ class DishApiHelperImp @Inject constructor(private val dishApiService: DishApiSe
 
     override suspend fun rateDish(rateDish: RateDish): Response<DishRating> = dishApiService.rateDish(rateDish)
 
-    override suspend fun markAsFavorite(markFavoriteDish: MarkFavoriteDish): Response<Boolean> = dishApiService.markFavorite(markFavoriteDish)
+    override suspend fun markAsFavorite(markFavoriteDish: MarkFavoriteDish):
+            Response<Boolean> = dishApiService.markFavorite(markFavoriteDish)
+
+    override suspend fun fetchFavorites(userId: String?): Response<Dish> =
+        dishApiService.fetchFavorites(userId)
 }
