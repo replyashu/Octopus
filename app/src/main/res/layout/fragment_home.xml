@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="10dp" >
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.yuyakaido.android.cardstackview.CardStackView
             android:id="@+id/cardstack_dish"

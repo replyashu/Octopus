@@ -14,4 +14,6 @@ interface DishApiHelper {
 
     suspend fun markAsFavorite(markFavoriteDish: MarkFavoriteDish): Response<Boolean>
 
+    suspend fun fetchFavorites(userId: String?): Response<Dish>
+
 }
