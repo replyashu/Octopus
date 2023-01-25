@@ -8,4 +8,8 @@ object Keys {
 
     external fun webClientKey(): String
 
+    external fun notificationChannel(): String
+
+    external fun notificationChannelDescription(): String
+
 }
