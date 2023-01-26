@@ -1,6 +1,8 @@
 package com.ashu.ocotopus.api.dish
 
 import com.ashu.ocotopus.data.Dish
+import com.ashu.ocotopus.data.DishItem
+import com.ashu.ocotopus.data.requests.DeleteDish
 import com.ashu.ocotopus.data.requests.MarkFavoriteDish
 import com.ashu.ocotopus.data.requests.RateDish
 import com.ashu.ocotopus.data.responses.DishRating
@@ -19,4 +21,7 @@ class DishApiHelperImp @Inject constructor(private val dishApiService: DishApiSe
 
     override suspend fun fetchFavorites(userId: String?): Response<Dish> =
         dishApiService.fetchFavorites(userId)
+
+    override suspend fun deleteFavorite(deleteDish: DeleteDish): Response<DishItem>  =
+        dishApiService.deleteFavorite(deleteDish)
 }

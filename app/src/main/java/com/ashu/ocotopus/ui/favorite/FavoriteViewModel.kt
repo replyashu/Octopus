@@ -8,6 +8,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ashu.ocotopus.data.Dish
+import com.ashu.ocotopus.data.DishItem
+import com.ashu.ocotopus.data.requests.DeleteDish
 import com.ashu.ocotopus.data.responses.DishRating
 import com.ashu.ocotopus.repository.DishRepository
 import com.ashu.ocotopus.util.Resource
@@ -19,16 +21,19 @@ import javax.inject.Inject
 class FavoriteViewModel @Inject constructor(private val dishRepository: DishRepository) : ViewModel() {
 
     private val _favoriteDish = MutableLiveData<Resource<Dish>>()
+    private val _deleteDish = MutableLiveData<Resource<DishItem>>()
 
     val favoriteDish : LiveData<Resource<Dish>>
         get() = _favoriteDish
+
+    val deleteDish: LiveData<Resource<DishItem>>
+        get() = _deleteDish
 
 
     fun fetchFavoriteDish(userId: String?) = viewModelScope.launch {
         _favoriteDish.postValue(Resource.loading(null))
 
         try {
-
             dishRepository.fetchFavorites(userId).let {
                 if (it.isSuccessful) {
                     _favoriteDish.postValue(Resource.success(it.body()))
@@ -38,6 +43,21 @@ class FavoriteViewModel @Inject constructor(private val dishRepository: DishRepo
             }
         } catch (e: Exception) {
             Log.d("some error has occurred", e.message.toString())
+        }
+    }
+
+    fun deleteFavoriteDish(userId: String?, dishId: Long) = viewModelScope.launch {
+        _deleteDish.postValue(Resource.loading(null))
+        try {
+            dishRepository.removeFavorite(DeleteDish(userId, dishId)).let {
+                if (it.isSuccessful) {
+                    _deleteDish.postValue(Resource.success(it.body()))
+                } else {
+                    _deleteDish.postValue(Resource.error(it.message(), null))
+                }
+            }
+        } catch (e: java.lang.Exception) {
+            Log.d("dish deletion failed", e.stackTraceToString())
         }
     }
 

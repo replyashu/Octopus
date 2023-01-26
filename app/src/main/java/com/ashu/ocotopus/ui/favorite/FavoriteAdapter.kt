@@ -9,19 +9,22 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ashu.ocotopus.R
 import com.ashu.ocotopus.data.Dish
+import com.ashu.ocotopus.data.DishItem
 import com.ashu.ocotopus.util.toSinglePrecision
 import com.bumptech.glide.Glide
 
-class FavoriteAdapter(private val dishList: Dish?): RecyclerView.Adapter<FavoriteAdapter.FavoriteAdapterViewHolder>() {
+class FavoriteAdapter(private val dishList: Dish?,
+                      private var onItemClicked: ((dish: DishItem) -> Unit)): RecyclerView.Adapter<FavoriteAdapter.FavoriteAdapterViewHolder>() {
 
     inner class FavoriteAdapterViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        val dishImage: AppCompatImageView
-        val dishName: AppCompatTextView
-        val dishDescription: AppCompatTextView
-        val dishRating: AppCompatRatingBar
-        val dishRateMe: AppCompatRatingBar
-        val totalRating: AppCompatTextView
+        private val dishImage: AppCompatImageView
+        private val dishName: AppCompatTextView
+        private val dishDescription: AppCompatTextView
+        private val dishRating: AppCompatRatingBar
+        private val dishRateMe: AppCompatRatingBar
+        private val totalRating: AppCompatTextView
+        private val deleteButton: AppCompatImageView
 
         init {
             dishImage = view.findViewById(R.id.image_dish)
@@ -30,31 +33,38 @@ class FavoriteAdapter(private val dishList: Dish?): RecyclerView.Adapter<Favorit
             dishRating = view.findViewById(R.id.dish_rating)
             dishRateMe = view.findViewById(R.id.dish_rate_it)
             totalRating = view.findViewById(R.id.text_total_rating)
+            deleteButton = view.findViewById(R.id.image_delete_dish)
+        }
+
+        fun bind(dishItem: DishItem?) {
+            dishItem?.let {
+                Glide.with(dishImage.context).load(dishItem.dishUrl)
+                    .error(R.drawable.octopus).placeholder(R.drawable.octopus).into(dishImage)
+                dishName.text = dishItem.dishName
+                dishDescription.text = dishItem.dishDescription
+                dishRating.rating = dishItem.dishRating!!.toFloat()
+                totalRating.text = buildString {
+                    append(dishItem.dishRating!!.toSinglePrecision())
+                    append("(")
+                    append(dishItem.totalRatings.toString())
+                    append(")")
+                }
+                deleteButton.setOnClickListener { _ ->
+                    onItemClicked(it)
+                }
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteAdapterViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.dish_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.favorite_item, parent, false)
         return FavoriteAdapterViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: FavoriteAdapterViewHolder, position: Int) {
         val data = dishList?.get(position)
-        data?.let {
-            holder.apply {
-                Glide.with(dishImage.context).load(data.dishUrl)
-                    .error(R.drawable.octopus).placeholder(R.drawable.octopus).into(dishImage)
-                dishName.text = data.dishName
-                dishDescription.text = data.dishDescription
-                dishRating.rating = data.dishRating!!.toFloat()
-                totalRating.text = buildString {
-                    append(data.dishRating!!.toSinglePrecision())
-                    append("(")
-                    append(data.totalRatings.toString())
-                    append(")")
-                }
-            }
-        }
+
+        holder.bind(data)
     }
 
     override fun getItemCount(): Int {
@@ -62,5 +72,11 @@ class FavoriteAdapter(private val dishList: Dish?): RecyclerView.Adapter<Favorit
             return 0
         else
             return dishList.size
+    }
+
+    fun deleteDish(dishItem: DishItem?) {
+        val pos: Int = dishList?.indexOf(dishItem)!!
+        dishList.removeAt(pos)
+        notifyItemRemoved(pos)
     }
 }

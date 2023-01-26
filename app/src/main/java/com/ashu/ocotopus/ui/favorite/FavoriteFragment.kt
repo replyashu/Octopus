@@ -56,11 +56,23 @@ class FavoriteFragment : Fragment() {
             viewModel.fetchFavoriteDish(userId)
         }
 
-        viewModel.favoriteDish.observe(viewLifecycleOwner) {
-            binding.recyclerFavoriteDish.layoutManager = LinearLayoutManager(context)
-            adapter = FavoriteAdapter(it.data)
+        viewModel.favoriteDish.observe(viewLifecycleOwner) { d ->
+            d.data?.let {
+                if (d.data?.size!! > 0) {
+                    binding.recyclerFavoriteDish.layoutManager = LinearLayoutManager(context)
+                    adapter = null
+                    adapter = FavoriteAdapter(d.data) {
+                        viewModel.deleteFavoriteDish(userId, it.dishId)
+                    }
+                    binding.recyclerFavoriteDish.adapter = adapter
+                }
+            }
+        }
 
-            binding.recyclerFavoriteDish.adapter = adapter
+        viewModel.deleteDish.observe(viewLifecycleOwner) {
+           it.data?.let { dishItem ->
+               adapter?.deleteDish(dishItem)
+           }
         }
     }
 

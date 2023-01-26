@@ -4,6 +4,7 @@
     package="com.ashu.ocotopus">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-sdk tools:overrideLibrary="com.truecaller.android.sdk"/>
 
     <application
