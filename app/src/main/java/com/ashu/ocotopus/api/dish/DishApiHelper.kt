@@ -1,6 +1,8 @@
 package com.ashu.ocotopus.api.dish
 
 import com.ashu.ocotopus.data.Dish
+import com.ashu.ocotopus.data.DishItem
+import com.ashu.ocotopus.data.requests.DeleteDish
 import com.ashu.ocotopus.data.requests.MarkFavoriteDish
 import com.ashu.ocotopus.data.requests.RateDish
 import com.ashu.ocotopus.data.responses.DishRating
@@ -15,5 +17,7 @@ interface DishApiHelper {
     suspend fun markAsFavorite(markFavoriteDish: MarkFavoriteDish): Response<Boolean>
 
     suspend fun fetchFavorites(userId: String?): Response<Dish>
+
+    suspend fun deleteFavorite(deleteDish: DeleteDish): Response<DishItem>
 
 }
