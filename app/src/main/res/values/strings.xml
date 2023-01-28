@@ -8,7 +8,8 @@
     <string name="hungry">Hungry Me</string>
     <string name="profile">Profile</string>
 
-
+    <string name="char_count">Characters: %s</string>
+    <string name="word_count">Words: %s</string>
     <string name="truecaller_key">5B5L0d5f74f76bc92475ba657984bcb2c7ff6</string>
 
 </resources>

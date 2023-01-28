@@ -62,7 +62,7 @@ class FavoriteFragment : Fragment() {
                     binding.recyclerFavoriteDish.layoutManager = LinearLayoutManager(context)
                     adapter = null
                     adapter = FavoriteAdapter(d.data) {
-                        viewModel.deleteFavoriteDish(userId, it.dishId)
+                        viewModel.deleteFavoriteDish(userId, it.dishId!!)
                     }
                     binding.recyclerFavoriteDish.adapter = adapter
                 }

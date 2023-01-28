@@ -1,7 +1,5 @@
 package com.ashu.ocotopus.ui.favorite
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.ashu.ocotopus.data.Dish
 import com.ashu.ocotopus.data.DishItem
 import com.ashu.ocotopus.data.requests.DeleteDish
-import com.ashu.ocotopus.data.responses.DishRating
 import com.ashu.ocotopus.repository.DishRepository
 import com.ashu.ocotopus.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
