@@ -48,6 +48,10 @@ class DishAdapter(private var dishData: Dish?) :
         val data = dishData?.get(position)
         data?.let {
             holder.apply {
+//                val url = data.dishUrl
+//                val bitmap: Bitmap =
+//                    BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length)
+
                 Glide.with(dishImage.context).load(data.dishUrl)
                     .error(R.drawable.octopus).placeholder(R.drawable.octopus).into(dishImage)
                 dishName.text = data.dishName

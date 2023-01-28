@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/bg_gradient.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bottom_nav_selector.xml" value="0.1135" />
+        <entry key="app/src/main/res/drawable/entry_border.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_add_to_favorites_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_dining_icon.xml" value="0.1" />
@@ -21,6 +22,7 @@
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_hungry.xml" value="0.2859375" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_upload_dish.xml" value="0.1" />
