@@ -1,58 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.hungry.HungryFragment">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/image_upload_dish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:srcCompat="@drawable/image_upload"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/text_dish_name"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_margin="20dp"
-        android:hint="Please Tell us the Dish Name"
-        app:layout_constraintTop_toBottomOf="@id/image_upload_dish" />
+        android:layout_height="match_parent"
+        tools:context=".ui.hungry.HungryFragment">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/text_dish_description"
-        android:layout_width="0dp"
-        android:padding="20dp"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:minHeight="200dp"
-        android:hint="Write desctiption here"
-        android:background="@drawable/entry_border"
-        app:layout_constraintStart_toStartOf="@id/text_dish_name"
-        app:layout_constraintEnd_toEndOf="@id/text_dish_name"
-        app:layout_constraintTop_toBottomOf="@id/text_dish_name" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_upload_dish"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:layout_margin="20dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            app:shapeAppearanceOverlay="@style/customRoundedImageView"
+            app:srcCompat="@drawable/image_upload"
+            app:layout_constraintTop_toBottomOf="@+id/button_submit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/text_char_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/char_count"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@id/text_dish_name"
-        app:layout_constraintTop_toBottomOf="@id/text_dish_description" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/text_dish_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_margin="20dp"
+            android:hint="Please Tell us the Dish Name"
+            app:layout_constraintTop_toBottomOf="@id/image_upload_dish" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/text_word_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/word_count"
-        app:layout_constraintEnd_toEndOf="@id/text_dish_name"
-        app:layout_constraintTop_toBottomOf="@id/text_char_count" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/text_dish_description"
+            android:layout_width="0dp"
+            android:padding="20dp"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:minHeight="200dp"
+            android:hint="Write desctiption here"
+            android:background="@drawable/entry_border"
+            app:layout_constraintStart_toStartOf="@id/text_dish_name"
+            app:layout_constraintEnd_toEndOf="@id/text_dish_name"
+            app:layout_constraintTop_toBottomOf="@id/text_dish_name" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_char_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/char_count"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@id/text_dish_name"
+            app:layout_constraintTop_toBottomOf="@id/text_dish_description" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_word_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/word_count"
+            app:layout_constraintEnd_toEndOf="@id/text_dish_name"
+            app:layout_constraintTop_toBottomOf="@id/text_char_count" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
