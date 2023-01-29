@@ -13,4 +13,6 @@ class UserRepository @Inject constructor(private val userAPiHelper: UserAPiHelpe
 
     suspend fun sendNotifications() = userAPiHelper.sendNotificationToAll()
 
+    suspend fun fetchUserData(userId: String?) = userAPiHelper.getUserProfileData(userId)
+
 }
