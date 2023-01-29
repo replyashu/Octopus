@@ -5,7 +5,9 @@
       <map>
         <entry key="app/src/main/res/drawable/bg_gradient.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bottom_nav_selector.xml" value="0.1135" />
+        <entry key="app/src/main/res/drawable/curve_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/entry_border.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/gradient_profile.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_add_to_favorites_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_dining_icon.xml" value="0.1" />
@@ -24,7 +26,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_hungry.xml" value="0.2859375" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1404494382022472" />
         <entry key="app/src/main/res/layout/fragment_upload_dish.xml" value="0.1" />
         <entry key="app/src/main/res/layout/motion_dish_of_day.xml" value="0.13601823708206687" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.2324074074074074" />

@@ -74,7 +74,7 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
                 }
 
 //                viewModel.sendNotificationToAll()
-                if (it == null) {
+                if (it == null || it.data?.size == 0) {
                     checkEmpty()
                 }
             }

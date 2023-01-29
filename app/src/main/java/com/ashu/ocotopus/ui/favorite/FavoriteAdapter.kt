@@ -1,5 +1,7 @@
 package com.ashu.ocotopus.ui.favorite
 
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +40,11 @@ class FavoriteAdapter(private val dishList: Dish?,
 
         fun bind(dishItem: DishItem?) {
             dishItem?.let {
-                Glide.with(dishImage.context).load(dishItem.dishUrl)
+                val url = it.dishUrl
+                val imageByteArray: ByteArray = Base64.decode(url, Base64.DEFAULT)
+
+                val bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
+                Glide.with(dishImage.context).load(bmp)
                     .error(R.drawable.octopus).placeholder(R.drawable.octopus).into(dishImage)
                 dishName.text = dishItem.dishName
                 dishDescription.text = dishItem.dishDescription

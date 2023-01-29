@@ -1,5 +1,7 @@
 package com.ashu.ocotopus.ui.home.adapter
 
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,11 +50,12 @@ class DishAdapter(private var dishData: Dish?) :
         val data = dishData?.get(position)
         data?.let {
             holder.apply {
-//                val url = data.dishUrl
-//                val bitmap: Bitmap =
-//                    BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length)
+                val url = data.dishUrl
+                val imageByteArray: ByteArray = Base64.decode(url, Base64.DEFAULT)
 
-                Glide.with(dishImage.context).load(data.dishUrl)
+                val bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
+
+                Glide.with(dishImage.context).load(bmp)
                     .error(R.drawable.octopus).placeholder(R.drawable.octopus).into(dishImage)
                 dishName.text = data.dishName
                 dishDescription.text = data.dishDescription
