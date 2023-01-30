@@ -3,6 +3,7 @@ package com.ashu.ocotopus.api.user
 import com.ashu.ocotopus.data.ProfileUser
 import com.ashu.ocotopus.data.requests.NotificationToken
 import com.ashu.ocotopus.data.requests.RegisterUser
+import com.ashu.ocotopus.data.requests.UpdateProfile
 import com.ashu.ocotopus.data.responses.RegisterResponse
 import com.google.firebase.firestore.auth.User
 import retrofit2.Response
@@ -24,4 +25,7 @@ interface UserApiService {
 
     @GET("user/profile")
     suspend fun fetchUserProfile(@Query("userId") userId: String?): Response<ProfileUser>
+
+    @POST("user/edit-profile")
+    suspend fun updateUserProfile(@Body updateProfile: UpdateProfile?): Response<ProfileUser>
 }

@@ -27,5 +27,5 @@
         android:id="@+id/navigation_profile"
         android:name="com.ashu.ocotopus.ui.profile.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_hungry" />
+        tools:layout="@layout/fragment_edit_profile" />
 </navigation>

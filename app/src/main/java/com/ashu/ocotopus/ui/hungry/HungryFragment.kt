@@ -25,6 +25,7 @@ import com.ashu.ocotopus.R
 import com.ashu.ocotopus.data.requests.AddDish
 import com.ashu.ocotopus.databinding.FragmentHungryBinding
 import com.ashu.ocotopus.util.ManagePermissions
+import com.ashu.ocotopus.util.clickWithDebounce
 import com.ashu.ocotopus.util.toBase64
 import com.ashu.ocotopus.util.toUri
 import com.bumptech.glide.Glide
@@ -88,7 +89,7 @@ class HungryFragment : Fragment() {
     }
 
     private fun initUI() {
-        binding.imageUploadDish.setOnClickListener {
+        binding.imageUploadDish.clickWithDebounce {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (managePermissions.checkPermissions()) {
                     chooseSource()
@@ -134,7 +135,7 @@ class HungryFragment : Fragment() {
             }
         })
 
-        binding.buttonSubmit.setOnClickListener {
+        binding.buttonSubmit.clickWithDebounce() {
             val userId = sharedPreferences.getString("user_uuid", null)
             val addDish = AddDish(binding.textDishName.editableText.toString(),
                 binding.textDishDescription.editableText.toString(),
