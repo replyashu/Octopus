@@ -3,8 +3,10 @@ package com.ashu.ocotopus.util
 import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.SystemClock
 import android.provider.MediaStore
 import android.util.Base64.*
+import android.view.View
 import java.io.ByteArrayOutputStream
 
 fun Double.toSinglePrecision(): Double {
@@ -30,4 +32,17 @@ fun Bitmap.toBase64(): String? {
     this.compress(Bitmap.CompressFormat.JPEG, 100, baos)
     val b = baos.toByteArray()
     return encodeToString(b, NO_WRAP)
+}
+
+fun View.clickWithDebounce(debounceTime: Long = 600L, action: () -> Unit) {
+    this.setOnClickListener(object : View.OnClickListener {
+        private var lastClickTime: Long = 0
+
+        override fun onClick(v: View) {
+            if (SystemClock.elapsedRealtime() - lastClickTime < debounceTime) return
+            else action()
+
+            lastClickTime = SystemClock.elapsedRealtime()
+        }
+    })
 }

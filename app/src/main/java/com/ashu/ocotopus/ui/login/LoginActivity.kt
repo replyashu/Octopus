@@ -15,6 +15,7 @@ import com.ashu.ocotopus.data.requests.NotificationToken
 import com.ashu.ocotopus.databinding.ActivityLoginBinding
 import com.ashu.ocotopus.util.Keys
 import com.ashu.ocotopus.util.Status
+import com.ashu.ocotopus.util.clickWithDebounce
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -51,11 +52,17 @@ class LoginActivity: AppCompatActivity(), View.OnClickListener, ITrueCallback {
         oneTapClient = Identity.getSignInClient(this)
         signInRequest = viewModel.getSigninRequest(Keys.webClientKey())
 
-        binding?.googleButton?.setOnClickListener(this)
+        binding?.googleButton?.clickWithDebounce {
+            googleSignIn()
+        }
 
         initializeTruecaller()
 
-        binding?.loginWithTruecaller?.setOnClickListener(this)
+        binding?.loginWithTruecaller?.clickWithDebounce {
+            if (TruecallerSDK.getInstance().isUsable) {
+                TruecallerSDK.getInstance().getUserProfile(this);
+            }
+        }
 
         viewModel.register.observe(this) {
             when(it.status) {
@@ -120,13 +127,6 @@ class LoginActivity: AppCompatActivity(), View.OnClickListener, ITrueCallback {
 
     override fun onClick(v: View?) {
         when(v?.id) {
-            R.id.google_button ->
-                googleSignIn()
-            R.id.login_with_truecaller -> {
-                if (TruecallerSDK.getInstance().isUsable) {
-                    TruecallerSDK.getInstance().getUserProfile(this);
-                }
-            }
         }
     }
 

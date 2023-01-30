@@ -22,6 +22,7 @@
         <entry key="app/src/main/res/layout/dish_item.xml" value="0.165" />
         <entry key="app/src/main/res/layout/favorite_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_edit_profile.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_hungry.xml" value="0.2859375" />

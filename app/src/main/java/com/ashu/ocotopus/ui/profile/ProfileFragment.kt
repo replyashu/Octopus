@@ -1,10 +1,21 @@
 package com.ashu.ocotopus.ui.profile
 
+import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
+import android.database.Cursor
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -12,8 +23,12 @@ import com.ashu.ocotopus.R
 import com.ashu.ocotopus.data.ProfileUser
 import com.ashu.ocotopus.databinding.FragmentProfileBinding
 import com.ashu.ocotopus.util.Status
+import com.ashu.ocotopus.util.clickWithDebounce
+import com.ashu.ocotopus.util.toBase64
+import com.ashu.ocotopus.util.toUri
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.InputStream
 
 @AndroidEntryPoint
 class ProfileFragment: Fragment() {
@@ -26,7 +41,9 @@ class ProfileFragment: Fragment() {
     private val viewModel by viewModels<ProfileViewModel>()
     private val sharedPreferences by lazy { context?.getSharedPreferences("preference_key", Context.MODE_PRIVATE) }
 
+    private var profileUser: ProfileUser? = null
 
+    private var imgSrc: String? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,6 +60,7 @@ class ProfileFragment: Fragment() {
 
     private fun initializeUI() {
         binding.imageProfile.bringToFront()
+        binding.imageEditProfile.bringToFront()
         val userId = sharedPreferences?.getString("user_uuid", null)
         viewModel.fetchProfileData(userId)
 
@@ -51,15 +69,35 @@ class ProfileFragment: Fragment() {
                 populateProfileFields(it.data)
             }
         }
+
+        binding.imageEditProfile.clickWithDebounce {
+            val transaction = parentFragmentManager.beginTransaction()
+            val bundle = Bundle()
+            val fragment = EditProfileFragment.createInstance()
+            bundle.putSerializable("user_data", profileUser)
+            fragment.arguments = bundle
+            transaction.add(R.id.profile_container, fragment).addToBackStack("profile").commit()
+        }
     }
 
     private fun populateProfileFields(user: ProfileUser?) {
         binding.apply {
             user?.let {
-                Glide.with(requireContext())
-                    .load(it.profilePhoto)
-                    .placeholder(R.drawable.ic_office_worker_icon)
-                    .into(imageProfile)
+                profileUser = it
+                imgSrc = it.profileSrc
+                if (imgSrc.isNullOrEmpty()) {
+
+                    imgSrc = it.profilePhoto
+                    Glide.with(requireContext())
+                        .load(imgSrc)
+                        .placeholder(R.drawable.ic_office_worker_icon)
+                        .into(imageProfile)
+                } else {
+                    val imageByteArray: ByteArray = Base64.decode(imgSrc, Base64.DEFAULT)
+                    val bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
+                    Glide.with(requireContext()).load(bmp)
+                        .error(R.drawable.octopus).placeholder(R.drawable.octopus).into(imageProfile)
+                }
 
                 if (it.name.isNullOrEmpty()) {
                     textProfileName.visibility = View.GONE
@@ -91,8 +129,6 @@ class ProfileFragment: Fragment() {
                 textProfilePhone.text = it.phoneNumber
             }
         }
-
-
     }
 
     override fun onDestroyView() {
