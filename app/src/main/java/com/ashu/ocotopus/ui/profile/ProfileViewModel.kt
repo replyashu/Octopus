@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ashu.ocotopus.data.ProfileUser
+import com.ashu.ocotopus.data.requests.UpdateProfile
 import com.ashu.ocotopus.repository.UserRepository
 import com.ashu.ocotopus.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,6 +20,11 @@ class ProfileViewModel @Inject constructor(private val userRepository: UserRepos
 
     val profile: LiveData<Resource<ProfileUser>>
         get() = _profile
+
+    private val _editProfile = MutableLiveData<Resource<ProfileUser>>()
+
+    val editProfile: LiveData<Resource<ProfileUser>>
+        get() = _editProfile
 
     fun fetchProfileData(userId: String?) = viewModelScope.launch {
         _profile.postValue(Resource.loading(null))
@@ -36,8 +42,23 @@ class ProfileViewModel @Inject constructor(private val userRepository: UserRepos
         }
     }
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is profile Fragment"
+    fun updateProfile(userId: String?, profileUser: ProfileUser?) = viewModelScope.launch {
+        _editProfile.postValue(Resource.loading(null))
+        try {
+            val updateProfile = UpdateProfile(profileUser?.email,
+                profileUser?.name, profileUser?.phoneNumber, profileUser?.profilePhoto,
+                profileUser?.profileSrc, userId = userId, mediumOfRegistration = "android")
+            userRepository.updateUserData(updateProfile).let {
+                if (it.isSuccessful) {
+                    _editProfile.postValue(Resource.success(it.body()))
+                } else {
+                    _editProfile.postValue(Resource.error(it.errorBody().toString(), null))
+                }
+            }
+        } catch (e: Exception) {
+            Log.d("edit error", e.message.toString())
     }
-    val text: LiveData<String> = _text
+    }
+
+
 }
