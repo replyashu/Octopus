@@ -58,8 +58,8 @@ class HomeFragment : Fragment(), CardStackListener, DishAdapter.OnItemClicked {
         return root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         viewModel.getDishes()
     }
 
