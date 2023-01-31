@@ -76,7 +76,10 @@ class ProfileFragment: Fragment() {
             val fragment = EditProfileFragment.createInstance()
             bundle.putSerializable("user_data", profileUser)
             fragment.arguments = bundle
-            transaction.add(R.id.profile_container, fragment).addToBackStack("profile").commit()
+            transaction.add(R.id.profile_container, fragment)
+                .addToBackStack("profile")
+                .setReorderingAllowed(true)
+                .commit()
         }
     }
 

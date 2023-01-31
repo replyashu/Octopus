@@ -24,10 +24,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ashu.ocotopus.R
 import com.ashu.ocotopus.data.requests.AddDish
 import com.ashu.ocotopus.databinding.FragmentHungryBinding
-import com.ashu.ocotopus.util.ManagePermissions
-import com.ashu.ocotopus.util.clickWithDebounce
-import com.ashu.ocotopus.util.toBase64
-import com.ashu.ocotopus.util.toUri
+import com.ashu.ocotopus.util.*
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -141,6 +138,12 @@ class HungryFragment : Fragment() {
                 binding.textDishDescription.editableText.toString(),
                 imageUrl, userId)
             viewModel.postDish(addDish)
+        }
+
+        viewModel.res.observe(viewLifecycleOwner) {
+            if (it.status == Status.SUCCESS) {
+                requireActivity().onBackPressed()
+            }
         }
     }
 
