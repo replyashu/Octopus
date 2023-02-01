@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.ashu.ocotopus.R
+import com.ashu.ocotopus.data.EditProfileData
 import com.ashu.ocotopus.data.ProfileUser
 import com.ashu.ocotopus.databinding.FragmentProfileBinding
 import com.ashu.ocotopus.util.Status
@@ -41,7 +42,8 @@ class ProfileFragment: Fragment() {
     private val viewModel by viewModels<ProfileViewModel>()
     private val sharedPreferences by lazy { context?.getSharedPreferences("preference_key", Context.MODE_PRIVATE) }
 
-    private var profileUser: ProfileUser? = null
+    private var profileUser: ProfileUser? = ProfileUser()
+    private var editProfileData: EditProfileData? = null
 
     private var imgSrc: String? = null
     override fun onCreateView(
@@ -74,7 +76,8 @@ class ProfileFragment: Fragment() {
             val transaction = parentFragmentManager.beginTransaction()
             val bundle = Bundle()
             val fragment = EditProfileFragment.createInstance()
-            bundle.putSerializable("user_data", profileUser)
+            profileUser?.profileSrc = null
+            bundle.putParcelable("user_data", profileUser)
             fragment.arguments = bundle
             transaction.add(R.id.profile_container, fragment)
                 .addToBackStack("profile")
@@ -89,8 +92,8 @@ class ProfileFragment: Fragment() {
                 profileUser = it
                 imgSrc = it.profileSrc
                 if (imgSrc.isNullOrEmpty()) {
-
                     imgSrc = it.profilePhoto
+                    profileUser?.profilePhoto = imgSrc
                     Glide.with(requireContext())
                         .load(imgSrc)
                         .placeholder(R.drawable.ic_office_worker_icon)
@@ -100,6 +103,8 @@ class ProfileFragment: Fragment() {
                     val bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
                     Glide.with(requireContext()).load(bmp)
                         .error(R.drawable.octopus).placeholder(R.drawable.octopus).into(imageProfile)
+                    val tmpBm = Bitmap.createScaledBitmap(bmp, 200, 200, false);
+                    profileUser?.transferImage = tmpBm
                 }
 
                 if (it.name.isNullOrEmpty()) {

@@ -2,17 +2,18 @@ package com.ashu.ocotopus.data.requests
 
 import com.ashu.ocotopus.data.ProfileUser
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class UpdateProfile(
     @SerializedName("email")
     val email: String? = null,
     @SerializedName("name")
     val name: String? = null,
-    @SerializedName("userPhone")
+    @SerializedName("phoneNumber")
     val phoneNumber: String? = null,
-    @SerializedName("imageUrl")
+    @SerializedName("profilePhoto")
     val profilePhoto: String? = null,
-    @SerializedName("imageBytes")
+    @SerializedName("userImage")
     val profileSrc: String? = null,
     @SerializedName("isSubscribed")
     val isSubscribed: Boolean? = false,
@@ -21,4 +22,4 @@ data class UpdateProfile(
     @SerializedName("isGuestUser")
     val isGuestUser: Boolean? = null,
     val userId: String? = null
-)
+) : Serializable
