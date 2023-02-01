@@ -2,6 +2,6 @@
 <network-security-config>
     <base-config cleartextTrafficPermitted="true" />
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">http://localhost</domain>
+        <domain includeSubdomains="true">localhost</domain>
     </domain-config>
 </network-security-config>

@@ -1,25 +1,29 @@
 package com.ashu.ocotopus.data
 
+import android.graphics.Bitmap
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import java.io.Serializable
 
+@Parcelize
 data class ProfileUser(
     @SerializedName("email")
-    val email: String? = null,
+    var email: String? = null,
     @SerializedName("name")
-    val name: String? = null,
+    var name: String? = null,
     @SerializedName("userPhone")
-    val phoneNumber: String? = null,
+    var phoneNumber: String? = null,
     @SerializedName("imageUrl")
-    val profilePhoto: String? = null,
+    var profilePhoto: String? = null,
     @SerializedName("imageBytes")
-    val profileSrc: String? = null,
+    var profileSrc: String? = null,
     @SerializedName("isSubscribed")
-    val isSubscribed: Boolean? = false,
+    var isSubscribed: Boolean? = false,
     @SerializedName("mediumOfRegistration")
-    val mediumOfRegistration: String = "google_android",
+    var mediumOfRegistration: String = "google_android",
     @SerializedName("isGuestUser")
-    val isGuestUser: Boolean? = null
-) : Serializable
+    var isGuestUser: Boolean? = null,
+    @SerializedName("transferImage")
+    var transferImage: Bitmap? = null
+) : Parcelable

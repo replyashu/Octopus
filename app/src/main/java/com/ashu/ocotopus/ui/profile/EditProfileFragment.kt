@@ -66,7 +66,7 @@ class EditProfileFragment: Fragment() {
 
     private fun initializeUI() {
         binding.imageProfile.bringToFront()
-        val userData: ProfileUser? = arguments?.getSerializable("user_data") as ProfileUser?
+        val userData: ProfileUser? = arguments?.getParcelable("user_data") as ProfileUser?
 //        val profileImage = arguments?.getString("profile_image")
 //        val profileName = arguments?.getString("profile_name")
 //        val profileEmail = arguments?.getString("profile_email")
@@ -75,14 +75,20 @@ class EditProfileFragment: Fragment() {
 
         binding.apply {
             try {
-                val imageByteArray: ByteArray = Base64.decode(userData?.profileSrc, Base64.DEFAULT)
-                val bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
+                if (userData?.transferImage != null) {
+                    Glide.with(requireContext())
+                        .load(userData.transferImage)
+                        .placeholder(R.drawable.ic_office_worker_icon)
+                        .into(imageProfile)
+                    imageUrl = userData.transferImage?.toBase64()
+                } else {
+                    Glide.with(requireContext())
+                        .load(userData?.profilePhoto)
+                        .placeholder(R.drawable.ic_office_worker_icon)
+                        .into(imageProfile)
+                    imageUrl = userData?.profilePhoto
+                }
 
-                Glide.with(requireContext())
-                    .load(bmp)
-                    .placeholder(R.drawable.ic_office_worker_icon)
-                    .into(imageProfile)
-                imageUrl = userData?.profileSrc
             } catch (e: Exception) {
                 Glide.with(requireContext())
                     .load(userData?.profilePhoto)
