@@ -3,11 +3,15 @@ package com.ashu.ocotopus.util
 import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Environment
 import android.os.SystemClock
 import android.provider.MediaStore
 import android.util.Base64.*
 import android.view.View
 import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
 
 fun Double.toSinglePrecision(): Double {
     return String.format("%.1f", this).toDouble()
@@ -45,4 +49,28 @@ fun View.clickWithDebounce(debounceTime: Long = 600L, action: () -> Unit) {
             lastClickTime = SystemClock.elapsedRealtime()
         }
     })
+}
+
+fun Bitmap.toFile(): File? {
+        val extStorageDirectory = Environment.getExternalStorageDirectory().toString();
+        var outStream: OutputStream? = null;
+        // String temp = null;
+        var file: File? = File(extStorageDirectory, "temp.png");
+        file?.let {
+            if (file!!.exists()) {
+                file!!.delete();
+                file = File(extStorageDirectory, "temp.png");
+            }
+        }
+        try {
+            outStream = FileOutputStream(file);
+            this.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+            outStream.flush();
+            outStream.close();
+
+        } catch (e: Exception) {
+            e.printStackTrace();
+            file = null;
+        }
+        return file;
 }

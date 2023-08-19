@@ -11,6 +11,7 @@ import com.ashu.ocotopus.repository.UserRepository
 import com.ashu.ocotopus.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
 import javax.inject.Inject
 
 @HiltViewModel
@@ -42,13 +43,16 @@ class ProfileViewModel @Inject constructor(private val userRepository: UserRepos
         }
     }
 
-    fun updateProfile(userId: String?, profileUser: ProfileUser?) = viewModelScope.launch {
+    fun updateProfile(profileUser: ProfileUser?) = viewModelScope.launch {
         _editProfile.postValue(Resource.loading(null))
         try {
-            val updateProfile = UpdateProfile(profileUser?.email,
-                profileUser?.name, profileUser?.phoneNumber, profileUser?.profilePhoto,
-                profileUser?.profileSrc, userId = userId, mediumOfRegistration = "android")
-            userRepository.updateUserData(updateProfile).let {
+
+//            val updateProfile = UpdateProfile(profileUser?.email,
+//                profileUser?.name, profileUser?.phoneNumber, profileUser?.profilePhoto,
+//                profileUser?.profileSrc, userId = userId, mediumOfRegistration = "android")
+            userRepository.updateUserData(MultipartBody.Part.createFormData(
+                name = "updateProfile", profileUser.toString()
+            ), MultipartBody.Part.createFormData("userPhoto", profileUser?.imageFile?.name!!)).let {
                 if (it.isSuccessful) {
                     _editProfile.postValue(Resource.success(it.body()))
                 } else {

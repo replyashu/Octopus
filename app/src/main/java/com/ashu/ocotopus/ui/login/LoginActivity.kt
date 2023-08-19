@@ -73,7 +73,7 @@ class LoginActivity: AppCompatActivity(), View.OnClickListener, ITrueCallback {
                     showDashBoard()
                 }
                 Status.SUCCESS -> {
-                    Toast.makeText(this, "Welcome New User", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Welcome" + it.data?.name, Toast.LENGTH_LONG).show()
                     sharedpreferences.edit().putString("user_uuid", it.data?.userUid).apply()
                     retrieveFirebaseNotificationToken(it.data?.userUid)
                     showDashBoard()

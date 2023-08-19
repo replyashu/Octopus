@@ -23,12 +23,10 @@ import com.ashu.ocotopus.R
 import com.ashu.ocotopus.data.ProfileUser
 import com.ashu.ocotopus.databinding.FragmentEditProfileBinding
 import com.ashu.ocotopus.databinding.FragmentProfileBinding
-import com.ashu.ocotopus.util.Status
-import com.ashu.ocotopus.util.clickWithDebounce
-import com.ashu.ocotopus.util.toBase64
-import com.ashu.ocotopus.util.toUri
+import com.ashu.ocotopus.util.*
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
 import java.io.InputStream
 
 @AndroidEntryPoint
@@ -43,6 +41,8 @@ class EditProfileFragment: Fragment() {
     private val viewModel by viewModels<ProfileViewModel>()
 
     private var imageUrl: String? = null
+
+    private var imageFile: File? = null
 
     private val sharedPreferences by lazy { context?.getSharedPreferences("preference_key", Context.MODE_PRIVATE) }
 
@@ -74,28 +74,11 @@ class EditProfileFragment: Fragment() {
 //        val profileSrc = arguments?.getString("profile_src")
 
         binding.apply {
-            try {
-                if (userData?.transferImage != null) {
-                    Glide.with(requireContext())
-                        .load(userData.transferImage)
-                        .placeholder(R.drawable.ic_office_worker_icon)
-                        .into(imageProfile)
-                    imageUrl = userData.transferImage?.toBase64()
-                } else {
-                    Glide.with(requireContext())
-                        .load(userData?.profilePhoto)
-                        .placeholder(R.drawable.ic_office_worker_icon)
-                        .into(imageProfile)
-                    imageUrl = userData?.profilePhoto
-                }
-
-            } catch (e: Exception) {
-                Glide.with(requireContext())
-                    .load(userData?.profilePhoto)
-                    .placeholder(R.drawable.ic_office_worker_icon)
-                    .into(imageProfile)
-                imageUrl = userData?.profilePhoto
-            }
+            Glide.with(requireContext())
+                .load(userData?.profilePhoto)
+                .placeholder(R.drawable.ic_office_worker_icon)
+                .into(imageProfile)
+            imageUrl = userData?.profilePhoto
 
             textProfileName.setText(userData?.name)
             textProfileEmail.setText(userData?.email)
@@ -112,8 +95,8 @@ class EditProfileFragment: Fragment() {
 
                 val userId = sharedPreferences?.getString("user_uuid", null)
 
-                val profileUser = ProfileUser(email, name, phone, imageUrl, imageUrl)
-                viewModel.updateProfile(userId, profileUser)
+                val profileUser = ProfileUser(userId, email, name, phone, imageUrl, imageFile = imageFile)
+                viewModel.updateProfile(profileUser)
             }
         }
 
@@ -164,22 +147,7 @@ class EditProfileFragment: Fragment() {
                     val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
                     val bm =
                         MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imageUri);
-                    imageUrl = bm.toBase64()
-                    // Get the cursor
-
-                    // Get the cursor
-                    val cursor: Cursor? = requireContext().contentResolver.query(
-                        imageUri,
-                        filePathColumn, null, null, null
-                    )
-                    // Move to first row
-                    // Move to first row
-//                        cursor?.moveToFirst()
-//
-//                        val columnIndex: Int = cursor?.getColumnIndex(filePathColumn[0])!!
-//                        val imgDecodableString = cursor?.getString(columnIndex)
-//                        cursor.close()
-//                        doRequest(imgDecodableString)
+                    imageFile = bm.toFile()
                     Glide.with(requireContext()).load(imageUri)
                         .placeholder(R.drawable.empty_plate)
                         .into(binding.imageProfile)
@@ -195,7 +163,7 @@ class EditProfileFragment: Fragment() {
                 val selectedImage: Bitmap = it1.data?.extras?.get("data") as Bitmap
                 selectedImage.let { it ->
                     val data: Uri = it.toUri(requireContext())
-                    imageUrl = selectedImage.toBase64()
+                    imageFile = selectedImage.toFile()
                     Glide.with(requireContext()).load(it)
                         .placeholder(R.drawable.empty_plate)
                         .into(binding.imageProfile)
