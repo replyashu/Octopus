@@ -11,10 +11,6 @@ data class UpdateProfile(
     val name: String? = null,
     @SerializedName("phoneNumber")
     val phoneNumber: String? = null,
-    @SerializedName("profilePhoto")
-    val profilePhoto: String? = null,
-    @SerializedName("userImage")
-    val profileSrc: String? = null,
     @SerializedName("isSubscribed")
     val isSubscribed: Boolean? = false,
     @SerializedName("mediumOfRegistration")

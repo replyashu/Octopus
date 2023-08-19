@@ -42,7 +42,7 @@ class ProfileFragment: Fragment() {
     private val viewModel by viewModels<ProfileViewModel>()
     private val sharedPreferences by lazy { context?.getSharedPreferences("preference_key", Context.MODE_PRIVATE) }
 
-    private var profileUser: ProfileUser? = ProfileUser()
+    private var profileUser: ProfileUser? = ProfileUser(imageFile = null)
     private var editProfileData: EditProfileData? = null
 
     private var imgSrc: String? = null
@@ -76,7 +76,6 @@ class ProfileFragment: Fragment() {
             val transaction = parentFragmentManager.beginTransaction()
             val bundle = Bundle()
             val fragment = EditProfileFragment.createInstance()
-            profileUser?.profileSrc = null
             bundle.putParcelable("user_data", profileUser)
             fragment.arguments = bundle
             transaction.add(R.id.profile_container, fragment)
@@ -90,7 +89,6 @@ class ProfileFragment: Fragment() {
         binding.apply {
             user?.let {
                 profileUser = it
-                imgSrc = it.profileSrc
                 if (imgSrc.isNullOrEmpty()) {
                     imgSrc = it.profilePhoto
                     profileUser?.profilePhoto = imgSrc

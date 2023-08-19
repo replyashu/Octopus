@@ -4,10 +4,13 @@ import android.graphics.Bitmap
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import java.io.File
 import java.io.Serializable
 
 @Parcelize
 data class ProfileUser(
+    @SerializedName("userId")
+    var userId: String? = null,
     @SerializedName("email")
     var email: String? = null,
     @SerializedName("name")
@@ -16,8 +19,6 @@ data class ProfileUser(
     var phoneNumber: String? = null,
     @SerializedName("imageUrl")
     var profilePhoto: String? = null,
-    @SerializedName("imageBytes")
-    var profileSrc: String? = null,
     @SerializedName("isSubscribed")
     var isSubscribed: Boolean? = false,
     @SerializedName("mediumOfRegistration")
@@ -25,5 +26,6 @@ data class ProfileUser(
     @SerializedName("isGuestUser")
     var isGuestUser: Boolean? = null,
     @SerializedName("transferImage")
-    var transferImage: Bitmap? = null
+    var transferImage: Bitmap? = null,
+    val imageFile: File?
 ) : Parcelable

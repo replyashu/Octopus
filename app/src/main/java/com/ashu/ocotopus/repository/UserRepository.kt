@@ -5,6 +5,7 @@ import com.ashu.ocotopus.data.ProfileUser
 import com.ashu.ocotopus.data.requests.NotificationToken
 import com.ashu.ocotopus.data.requests.RegisterUser
 import com.ashu.ocotopus.data.requests.UpdateProfile
+import okhttp3.MultipartBody
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(private val userAPiHelper: UserAPiHelper) {
@@ -18,7 +19,8 @@ class UserRepository @Inject constructor(private val userAPiHelper: UserAPiHelpe
 
     suspend fun fetchUserData(userId: String?) = userAPiHelper.getUserProfileData(userId)
 
-    suspend fun updateUserData(updateProfile: UpdateProfile?) =
-        userAPiHelper.updateUserProfileData(updateProfile)
+    suspend fun updateUserData(updateProfile: MultipartBody.Part?,
+            userPhoto: MultipartBody.Part?) =
+        userAPiHelper.updateUserProfileData(updateProfile, userPhoto)
 
 }
